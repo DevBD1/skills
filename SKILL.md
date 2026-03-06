@@ -5,6 +5,8 @@ description: Advanced web scraping with Scrapling — MCP-native guidance for ex
 
 # Scrapling MCP — Web Scraping Guidance
 
+Source repo: https://github.com/DevBD1/openclaw-skill-scrapling-mcp
+
 > **Guidance Layer + MCP Integration**  
 > Use this skill for **strategy and patterns**. For execution, call Scrapling's MCP server via `mcporter`.
 
