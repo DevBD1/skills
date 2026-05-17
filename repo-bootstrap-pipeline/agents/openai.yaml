@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo Bootstrap Pipeline"
+  short_description: "Standardize repo docs and local agent skills"
+  default_prompt: "Use $repo-bootstrap-pipeline to standardize this git repo's docs, router, and starter local skills."

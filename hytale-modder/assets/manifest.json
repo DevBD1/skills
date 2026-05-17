@@ -1,0 +1,20 @@
+{
+  "Group": "${group}",
+  "Name": "${mod_name}",
+  "Version": "${version}",
+  "Description": "${mod_description}",
+  "Authors": [
+    {
+      "Name": "DevBD1"
+    }
+  ],
+  "Website": "${website}",
+  "ServerVersion": "${server_version}",
+  "Dependencies": {},
+  "OptionalDependencies": {
+    "com.kukso.hy.lib:KuksoHyLib": "*"
+  },
+  "DisabledByDefault": false,
+  "Main": "${entry_point}",
+  "IncludesAssetPack": "${includes_pack}"
+}

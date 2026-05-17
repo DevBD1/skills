@@ -1,0 +1,15 @@
+.DS_Store
+.agents/
+.gemini/
+.codex/
+node_modules/
+.env
+.env.*
+*.log
+logs/
+tmp/
+temp/
+.cache/
+cache/
+dist/
+build/

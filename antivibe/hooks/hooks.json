@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SubagentStop": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "A task just completed. If new code files were written or modified, let the user know they can run /antivibe to generate a deep-dive learning guide for what was just implemented. Keep the message to one sentence."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Analyze the current session. Did Claude Code write any new files or implement any features? If yes, respond with 'You can run /antivibe to generate deep-dive explanations for the code written this session.' If no meaningful code was written, respond with nothing."
+          }
+        ]
+      }
+    ]
+  }
+}
