@@ -11,6 +11,13 @@ import subprocess
 import sys
 from pathlib import Path
 
+MODEL_BY_TASK_CLASS = {
+    "heavy": "gemini-3.1-pro-preview",
+    "medium": "gemini-3.1-flash-lite",
+    "simple": "flash-lite",
+}
+ALLOWED_MODELS = set(MODEL_BY_TASK_CLASS.values())
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -22,7 +29,18 @@ def parse_args() -> argparse.Namespace:
         default="",
         help="Prompt to send to Gemini. Stdin is passed through as additional context.",
     )
-    parser.add_argument("-m", "--model", help="Optional Gemini model name.")
+    parser.add_argument(
+        "--task-class",
+        choices=tuple(MODEL_BY_TASK_CLASS),
+        default="medium",
+        help="Task route used to select a strict approved Gemini model.",
+    )
+    parser.add_argument(
+        "-m",
+        "--model",
+        choices=tuple(sorted(ALLOWED_MODELS)),
+        help="Optional approved Gemini model override.",
+    )
     parser.add_argument(
         "--mode",
         choices=("plan", "auto_edit"),
@@ -71,6 +89,12 @@ def main() -> int:
     if args.mode == "auto_edit" and not args.worktree:
         return fail("--mode auto_edit requires --worktree <name>.")
 
+    selected_model = args.model or MODEL_BY_TASK_CLASS[args.task_class]
+    if selected_model not in ALLOWED_MODELS:
+        return fail(
+            "Unsupported model. Use one of: " + ", ".join(sorted(ALLOWED_MODELS))
+        )
+
     gemini = shutil.which("gemini")
     if not gemini:
         return fail("gemini CLI was not found on PATH.", 127)
@@ -87,8 +111,7 @@ def main() -> int:
         "json",
         "--skip-trust",
     ]
-    if args.model:
-        command.extend(["--model", args.model])
+    command.extend(["--model", selected_model])
     if args.worktree:
         command.extend(["--worktree", args.worktree])
     command.extend(["--prompt", prompt or "Use the stdin context to answer the task."])
