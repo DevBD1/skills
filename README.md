@@ -29,6 +29,7 @@ folder is an active global skill with its own `SKILL.md`.
 - `crawl4ai` - web crawling and structured extraction workflows.
 - `supabase` - Supabase implementation guidance.
 - `supabase-postgres-best-practices` - Postgres performance guidance from Supabase.
+- `view-pdf` - interactive PDF viewing, annotation, form filling, and visual review.
 
 ### Design and Domain Skills
 
