@@ -19,6 +19,7 @@ folder is an active global skill with its own `SKILL.md`.
 ### Development and Reviews
 
 - `antivibe` - learning-focused explanations for AI-written code.
+- `gemini-cli-delegate` - delegate bounded planning, review, research, and worktree implementation tasks to Gemini CLI.
 - `grill-me` - plan and design stress testing through focused questions.
 - `repo-bootstrap-pipeline` - bootstrap repo docs, routing rules, and local agent skills.
 - `vercel-react-best-practices` - focused React and Next.js performance review guidance.
