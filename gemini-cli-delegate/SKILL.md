@@ -12,6 +12,7 @@ Use Gemini CLI as a secondary worker. Codex remains the orchestrator and must in
 - Prefer read-only delegation with `--approval-mode plan`.
 - Use `--output-format json` so Codex can parse response and usage metadata.
 - Use `--skip-trust` for headless runs so Gemini does not block on workspace trust prompts.
+- Run the wrapper outside the Codex sandbox when Gemini auth, network, local callbacks, or long sessions are needed. Request a persistent approval prefix for `["python3", "/Users/burak/.agents/skills/gemini-cli-delegate/scripts/gemini_delegate.py"]`.
 - Do not use `--approval-mode yolo`.
 - Do not treat Gemini output as source of truth. Verify claims against files, commands, docs, or tests.
 - Do not let Gemini edit files unless the user explicitly asks for implementation delegation.
@@ -52,6 +53,68 @@ The wrapper defaults to:
 ```bash
 gemini --approval-mode plan --output-format json --skip-trust --model gemini-3.1-flash-lite -p "<prompt>"
 ```
+
+## Long Chat Sessions
+
+Use named chats when the user wants a long Gemini conversation or follow-up turns over time. Named chats are local aliases stored in `/Users/burak/.codex/gemini-delegate/sessions.json`.
+
+Start or resume a named chat:
+
+```bash
+python3 /Users/burak/.agents/skills/gemini-cli-delegate/scripts/gemini_delegate.py \
+  --chat ai-coding-trends \
+  --task-class medium \
+  --prompt "Start a thread about recent AI-assisted coding trends."
+```
+
+Continue the same named chat:
+
+```bash
+python3 /Users/burak/.agents/skills/gemini-cli-delegate/scripts/gemini_delegate.py \
+  --chat ai-coding-trends \
+  --prompt "Go deeper on IDE agent workflows."
+```
+
+Resume Gemini directly when the user provides a selector:
+
+```bash
+python3 /Users/burak/.agents/skills/gemini-cli-delegate/scripts/gemini_delegate.py \
+  --resume latest \
+  --prompt "Continue from the latest Gemini session."
+```
+
+Use an explicit Gemini session UUID:
+
+```bash
+python3 /Users/burak/.agents/skills/gemini-cli-delegate/scripts/gemini_delegate.py \
+  --session-id 00000000-0000-0000-0000-000000000000 \
+  --prompt "Start or use this exact Gemini session."
+```
+
+List local named chats:
+
+```bash
+python3 /Users/burak/.agents/skills/gemini-cli-delegate/scripts/gemini_delegate.py \
+  --list-chats
+```
+
+Forget a local alias without deleting Gemini's native session:
+
+```bash
+python3 /Users/burak/.agents/skills/gemini-cli-delegate/scripts/gemini_delegate.py \
+  --forget-chat ai-coding-trends
+```
+
+Use live interactive Gemini only when the user wants a human-style CLI chat:
+
+```bash
+python3 /Users/burak/.agents/skills/gemini-cli-delegate/scripts/gemini_delegate.py \
+  --chat ai-coding-trends \
+  --interactive \
+  --prompt "Open this thread interactively."
+```
+
+Interactive mode uses Gemini `--prompt-interactive`, does not force JSON output, and lets the Gemini CLI own stdout/stderr.
 
 If Gemini reports model capacity errors, retry with an explicit model:
 
