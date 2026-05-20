@@ -28,6 +28,7 @@ folder is an active global skill with its own `SKILL.md`.
 ### Data and Platforms
 
 - `crawl4ai` - web crawling and structured extraction workflows.
+- `docker-expert` - Docker containerization, Compose, image optimization, and production hardening guidance.
 - `supabase` - Supabase implementation guidance.
 - `supabase-postgres-best-practices` - Postgres performance guidance from Supabase.
 - `view-pdf` - interactive PDF viewing, annotation, form filling, and visual review.
