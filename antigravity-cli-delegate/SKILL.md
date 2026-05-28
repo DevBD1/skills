@@ -1,17 +1,24 @@
 ---
 name: antigravity-cli-delegate
 description: Delegate bounded work from Codex to the local Antigravity CLI. Use when the user asks to split workload across Antigravity and Codex subscriptions, run Antigravity CLI for planning, brainstorming, second opinions, code review, web research, large-context analysis, or explicit interactive Antigravity sessions. Default to bounded print-mode delegation; use interactive mode only when requested.
+license: MIT
 ---
 
 # Antigravity CLI Delegate
 
 Use Antigravity CLI as a secondary worker. Codex remains the orchestrator and must inspect Antigravity's output before acting on it.
 
+## Install
+
+```bash
+npx skills add DevBD1/skills --skill antigravity-cli-delegate
+```
+
 ## Default Rules
 
 - Prefer bounded headless delegation through `agy --print`.
 - Use the wrapper's JSON output so Codex can parse response and conversation metadata.
-- Run the wrapper outside the Codex sandbox when Antigravity auth, network, local callbacks, or long sessions are needed. Request a persistent approval prefix for `["python3", "/Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py"]`.
+- Resolve the wrapper relative to the installed skill directory, then run `scripts/antigravity_delegate.py`. If the host agent sandboxes network, auth, local callbacks, or long-running commands, request the narrow approval needed for that wrapper command.
 - Do not use `agy --dangerously-skip-permissions`.
 - Do not treat Antigravity output as source of truth. Verify claims against files, commands, docs, or tests.
 - Do not let Antigravity make changes unless the user explicitly asks for implementation delegation or an interactive Antigravity session.
@@ -34,7 +41,7 @@ Prefer `medium` when unsure.
 Use the bundled wrapper for repeatable calls:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --task-class medium \
   --prompt "Review this plan for missing risks."
 ```
@@ -42,7 +49,7 @@ python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity
 Pipe context through stdin when useful:
 
 ```bash
-git diff --staged | python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+git diff --staged | python3 <skill-dir>/scripts/antigravity_delegate.py \
   --task-class medium \
   --prompt "Review this diff. Return findings with file, line, risk, and fix."
 ```
@@ -67,12 +74,12 @@ For Codex, the wrapper returns JSON:
 
 ## Long Chat Sessions
 
-Use named chats when the user wants a long Antigravity conversation or follow-up turns over time. Named chats are local aliases stored in `/Users/burak/.codex/antigravity-delegate/sessions.json`.
+Use named chats when the user wants a long Antigravity conversation or follow-up turns over time. Named chats are local aliases stored in `~/.antigravity-cli-delegate/sessions.json` by default. Override with `--state-dir` or `ANTIGRAVITY_DELEGATE_STATE_DIR`.
 
 Start or resume a named chat:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --chat ai-coding-trends \
   --task-class medium \
   --prompt "Start a thread about recent AI-assisted coding trends."
@@ -81,7 +88,7 @@ python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity
 Continue the same named chat:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --chat ai-coding-trends \
   --prompt "Go deeper on IDE agent workflows."
 ```
@@ -89,7 +96,7 @@ python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity
 Continue the latest Antigravity conversation:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --continue-latest \
   --prompt "Continue from the latest Antigravity session."
 ```
@@ -97,7 +104,7 @@ python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity
 Use an explicit Antigravity conversation ID:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --conversation 00000000-0000-0000-0000-000000000000 \
   --prompt "Continue this exact Antigravity conversation."
 ```
@@ -105,21 +112,21 @@ python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity
 List local named chats:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --list-chats
 ```
 
 Forget a local alias without deleting Antigravity's native conversation:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --forget-chat ai-coding-trends
 ```
 
 Use live interactive Antigravity only when the user wants a human-style CLI chat:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --chat ai-coding-trends \
   --interactive \
   --prompt "Open this thread interactively."
@@ -132,7 +139,7 @@ Interactive mode uses `agy --prompt-interactive`, does not return wrapper JSON, 
 For planning, brainstorming, reviews, research, and large-context analysis:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --cwd /path/to/repo \
   --task-class heavy \
   --timeout 300 \
@@ -142,7 +149,7 @@ python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity
 For additional workspace directories:
 
 ```bash
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py \
+python3 <skill-dir>/scripts/antigravity_delegate.py \
   --cwd /path/to/repo \
   --add-dir /path/to/extra/context \
   --prompt "Review the repo with the extra context directory."
@@ -159,13 +166,12 @@ Expected imported plugins after the Gemini migration include `postgres` and `sni
 ## Smoke Tests
 
 ```bash
-which gemini || true
 agy --version
-PYTHONPYCACHEPREFIX=/private/tmp/antigravity-delegate-pycache python3 -m py_compile /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py --list-chats
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py --task-class simple --prompt "Reply exactly: AGY_PRINT_OK"
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py --chat smoke-antigravity --prompt "Reply exactly: AGY_CHAT_START_OK"
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py --chat smoke-antigravity --prompt "Reply exactly: AGY_CHAT_CONTINUE_OK"
-python3 /Users/burak/.agents/skills/antigravity-cli-delegate/scripts/antigravity_delegate.py --forget-chat smoke-antigravity
+PYTHONPYCACHEPREFIX=/private/tmp/antigravity-delegate-pycache python3 -m py_compile <skill-dir>/scripts/antigravity_delegate.py
+python3 <skill-dir>/scripts/antigravity_delegate.py --list-chats --state-dir /private/tmp/antigravity-delegate-smoke
+python3 <skill-dir>/scripts/antigravity_delegate.py --task-class simple --prompt "Reply exactly: AGY_PRINT_OK"
+python3 <skill-dir>/scripts/antigravity_delegate.py --chat smoke-antigravity --prompt "Reply exactly: AGY_CHAT_START_OK"
+python3 <skill-dir>/scripts/antigravity_delegate.py --chat smoke-antigravity --prompt "Reply exactly: AGY_CHAT_CONTINUE_OK"
+python3 <skill-dir>/scripts/antigravity_delegate.py --forget-chat smoke-antigravity
 agy plugin list
 ```

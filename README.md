@@ -1,5 +1,7 @@
 # Skills
 
+[![skills.sh](https://skills.sh/b/DevBD1/skills)](https://skills.sh/DevBD1/skills)
+
 Curated global AI agent skills I use across workspaces.
 
 This repository is backed by the live `~/.agents/skills` directory, but it is
@@ -24,9 +26,13 @@ These skills are currently published as full folders in this repo.
 
 | Skill | Status | Notes |
 | --- | --- | --- |
-| `antigravity-cli-delegate` | owned | Local delegate wrapper for bounded Antigravity CLI work. |
+| `antigravity-cli-delegate` | owned / MIT | Local delegate wrapper for bounded Antigravity CLI work. Install with `npx skills add DevBD1/skills --skill antigravity-cli-delegate`. |
 | `hytale-modder` | owned | Local Hytale modding guidance and references. |
 | `repo-bootstrap-pipeline` | owned | Local repo bootstrap workflow and starter skill templates. |
+
+Owned published skill folders may include their own license files. The root
+repository intentionally has no blanket license because the collection also
+documents mixed-origin, pointer-only skills.
 
 ## Pointer-Only Skills
 
@@ -61,7 +67,7 @@ Run:
 
 ```bash
 find . -name ".DS_Store" -o -name ".git"
-rg -n "token|secret|password|api[_-]?key|/Users/burak|localhost|127\\.0\\.0\\.1|sk-|ghp_" .
+rg -n "token|secret|password|api[_-]?key|\\$HOME|localhost|127\\.0\\.0\\.1|sk-|ghp_" .
 find . -maxdepth 2 -name SKILL.md -print | sort
 git status --short --branch
 ```

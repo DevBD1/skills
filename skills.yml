@@ -4,7 +4,7 @@ skills:
     author: DevBD1
     source_url: https://github.com/DevBD1/skills/tree/main/antigravity-cli-delegate
     install_command: null
-    license: null
+    license: MIT
     published_in_repo: true
     notes: Local delegate wrapper for bounded Antigravity CLI work.
 

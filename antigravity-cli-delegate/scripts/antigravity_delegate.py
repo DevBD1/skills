@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Any
 
 TASK_CLASSES = ("heavy", "medium", "simple")
-SESSION_STORE = Path.home() / ".codex" / "antigravity-delegate" / "sessions.json"
+DEFAULT_STATE_DIR = Path.home() / ".antigravity-cli-delegate"
 CONVERSATION_CACHE = (
     Path.home()
     / ".gemini"
@@ -51,6 +51,14 @@ def parse_args() -> argparse.Namespace:
         "--cwd",
         default=os.getcwd(),
         help="Working directory for Antigravity. Defaults to the current directory.",
+    )
+    parser.add_argument(
+        "--state-dir",
+        default=os.environ.get("ANTIGRAVITY_DELEGATE_STATE_DIR"),
+        help=(
+            "Directory for local wrapper state. Defaults to "
+            "$ANTIGRAVITY_DELEGATE_STATE_DIR or ~/.antigravity-cli-delegate."
+        ),
     )
     parser.add_argument(
         "--chat",
@@ -119,23 +127,28 @@ def load_json_file(path: Path, *, default: Any) -> Any:
         raise ValueError(f"Could not read JSON file {path}: {exc}") from exc
 
 
-def load_sessions() -> dict[str, Any]:
-    data = load_json_file(SESSION_STORE, default={"chats": {}})
+def session_store_path(args: argparse.Namespace) -> Path:
+    state_dir = Path(args.state_dir).expanduser() if args.state_dir else DEFAULT_STATE_DIR
+    return state_dir / "sessions.json"
+
+
+def load_sessions(path: Path) -> dict[str, Any]:
+    data = load_json_file(path, default={"chats": {}})
     if not isinstance(data, dict):
-        raise ValueError(f"Session store must be a JSON object: {SESSION_STORE}")
+        raise ValueError(f"Session store must be a JSON object: {path}")
     chats = data.setdefault("chats", {})
     if not isinstance(chats, dict):
-        raise ValueError(f"Session store field 'chats' must be an object: {SESSION_STORE}")
+        raise ValueError(f"Session store field 'chats' must be an object: {path}")
     return data
 
 
-def save_sessions(data: dict[str, Any]) -> None:
-    SESSION_STORE.parent.mkdir(parents=True, exist_ok=True)
-    temp_path = SESSION_STORE.with_suffix(".json.tmp")
+def save_sessions(data: dict[str, Any], path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp_path = path.with_suffix(".json.tmp")
     with temp_path.open("w", encoding="utf-8") as file:
         json.dump(data, file, indent=2, sort_keys=True)
         file.write("\n")
-    temp_path.replace(SESSION_STORE)
+    temp_path.replace(path)
 
 
 def read_conversation_for_cwd(cwd: Path) -> str | None:
@@ -172,12 +185,13 @@ def resolve_chat(
     *,
     args: argparse.Namespace,
     cwd: Path,
+    session_store: Path,
 ) -> tuple[str | None, dict[str, Any] | None, str | None, bool]:
     if not args.chat:
         return None, None, None, False
 
     name = validate_chat_name(args.chat)
-    sessions = load_sessions()
+    sessions = load_sessions(session_store)
     chats = sessions["chats"]
     existing = chats.get(name)
 
@@ -272,6 +286,7 @@ def command_for_output(command: list[str]) -> list[str]:
 
 def main() -> int:
     args = parse_args()
+    session_store = session_store_path(args)
     stdin_text = "" if sys.stdin.isatty() else sys.stdin.read()
     prompt = args.prompt.strip()
     if stdin_text.strip():
@@ -279,7 +294,7 @@ def main() -> int:
 
     if args.list_chats:
         try:
-            print_json(load_sessions())
+            print_json(load_sessions(session_store))
         except ValueError as exc:
             return fail(str(exc), 1)
         return 0
@@ -287,10 +302,10 @@ def main() -> int:
     if args.forget_chat:
         try:
             name = validate_chat_name(args.forget_chat)
-            sessions = load_sessions()
+            sessions = load_sessions(session_store)
             removed = sessions["chats"].pop(name, None)
             if removed is not None:
-                save_sessions(sessions)
+                save_sessions(sessions, session_store)
             print_json({"forgotten": bool(removed), "name": name})
         except (OSError, ValueError) as exc:
             return fail(str(exc), 1)
@@ -312,6 +327,7 @@ def main() -> int:
         chat_conversation_id, sessions, chat_name, created_chat = resolve_chat(
             args=args,
             cwd=cwd,
+            session_store=session_store,
         )
     except ValueError as exc:
         return fail(str(exc), 1)
@@ -352,7 +368,7 @@ def main() -> int:
                 }
             )
             try:
-                save_sessions(sessions)
+                save_sessions(sessions, session_store)
             except OSError as exc:
                 return fail(
                     f"Antigravity succeeded but session alias could not be saved: {exc}",
@@ -408,7 +424,7 @@ def main() -> int:
             }
         )
         try:
-            save_sessions(sessions)
+            save_sessions(sessions, session_store)
         except OSError as exc:
             return fail(
                 f"Antigravity succeeded but session alias could not be saved: {exc}",
