@@ -8,6 +8,15 @@ skills:
     published_in_repo: true
     notes: Local delegate wrapper for bounded Antigravity CLI work.
 
+  - name: codex-cli-delegate
+    status: owned
+    author: DevBD1
+    source_url: https://github.com/DevBD1/skills/tree/main/codex-cli-delegate
+    install_command: npx skills add DevBD1/skills --skill codex-cli-delegate
+    license: MIT
+    published_in_repo: true
+    notes: Local delegate wrapper for bounded Codex CLI work by other agents.
+
   - name: hytale-modder
     status: owned
     author: DevBD1

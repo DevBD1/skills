@@ -27,6 +27,7 @@ These skills are currently published as full folders in this repo.
 | Skill | Status | Notes |
 | --- | --- | --- |
 | `antigravity-cli-delegate` | owned / MIT | Local delegate wrapper for bounded Antigravity CLI work. Install with `npx skills add DevBD1/skills --skill antigravity-cli-delegate`. |
+| `codex-cli-delegate` | owned / MIT | Local delegate wrapper for bounded Codex CLI work by other agents. Install with `npx skills add DevBD1/skills --skill codex-cli-delegate`. |
 | `hytale-modder` | owned | Local Hytale modding guidance and references. |
 | `repo-bootstrap-pipeline` | owned | Local repo bootstrap workflow and starter skill templates. |
 

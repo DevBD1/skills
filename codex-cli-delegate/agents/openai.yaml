@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex CLI Delegate"
+  short_description: "Delegate bounded work to Codex CLI"
+  default_prompt: "Use $codex-cli-delegate to ask Codex CLI for a read-only second opinion on this task."
