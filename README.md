@@ -36,18 +36,18 @@ without claiming ownership.
 
 | Skill | Status | Author / Source | Notes |
 | --- | --- | --- | --- |
-| `antivibe` | third-party | mohi-devhub / GitHub | Installed framework; source pointer only. |
-| `crawl4ai` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
-| `design-md` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
-| `docker-expert` | unknown-third-party | community | Local metadata marks this as community/unknown. |
-| `find-skills` | unknown-third-party | skills.sh | Skill discovery helper; source pointer only. |
-| `grill-me` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
-| `stitch-design` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
-| `supabase` | third-party | Supabase | Installed Supabase skill; source pointer only. |
-| `supabase-postgres-best-practices` | third-party | Supabase / MIT | Installed Supabase Postgres guidance; source pointer only. |
-| `vercel-react-best-practices` | third-party | Vercel / MIT | Installed Vercel React performance guidance; source pointer only. |
-| `view-pdf` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
-| `web-design-guidelines` | third-party | Vercel | Installed from Vercel Labs agent skills; source pointer only. |
+| `antivibe` | third-party | [mohi-devhub](https://github.com/mohi-devhub/antivibe) | Installed framework; source pointer only. |
+| `crawl4ai` | third-party | [brettdavies](https://github.com/brettdavies/crawl4ai-skill) | Installed Crawl4AI skill; source pointer only. |
+| `design-md` | third-party | [google-labs-code](https://github.com/google-labs-code/stitch-skills) | Installed from Google Labs Stitch skills; source pointer only. |
+| `docker-expert` | third-party | [sickn33](https://github.com/sickn33/antigravity-awesome-skills/blob/main/skills/docker-expert/SKILL.md) | Installed Docker expert skill; source pointer only. |
+| `find-skills` | unknown-third-party | [skills.sh](https://skills.sh/) | Skill discovery helper; source pointer only. |
+| `grill-me` | third-party | [mattpocock](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) | Installed productivity skill; source pointer only. |
+| `stitch-design` | third-party | [google-labs-code](https://github.com/google-labs-code/stitch-skills) | Installed from Google Labs Stitch skills; source pointer only. |
+| `supabase` | third-party | [Supabase](https://github.com/supabase/agent-skills/tree/main/skills) | Installed Supabase skill; source pointer only. |
+| `supabase-postgres-best-practices` | third-party | [Supabase](https://github.com/supabase/agent-skills/tree/main/skills) / MIT | Installed Supabase Postgres guidance; source pointer only. |
+| `vercel-react-best-practices` | third-party | [Vercel](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) / MIT | Installed Vercel React performance guidance; source pointer only. |
+| `view-pdf` | third-party | [Anthropic](https://github.com/anthropics/knowledge-work-plugins/blob/main/pdf-viewer/skills/view-pdf/SKILL.md) | Installed PDF viewer skill; source pointer only. |
+| `web-design-guidelines` | third-party | [Vercel](https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines) | Installed Vercel Labs web design review guidance; source pointer only. |
 
 ## Manifest
 
