@@ -1,4 +1,0 @@
-interface:
-  display_name: "Gemini CLI Delegate"
-  short_description: "Delegate bounded work to Gemini CLI"
-  default_prompt: "Use $gemini-cli-delegate to ask Gemini CLI for a read-only second opinion on this task."

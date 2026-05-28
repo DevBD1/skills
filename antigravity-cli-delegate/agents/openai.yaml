@@ -1,0 +1,4 @@
+interface:
+  display_name: "Antigravity CLI Delegate"
+  short_description: "Delegate bounded work to Antigravity CLI"
+  default_prompt: "Use $antigravity-cli-delegate to ask Antigravity CLI for a read-only second opinion on this task."
