@@ -1,0 +1,135 @@
+skills:
+  - name: antigravity-cli-delegate
+    status: owned
+    author: DevBD1
+    source_url: https://github.com/DevBD1/skills/tree/main/antigravity-cli-delegate
+    install_command: null
+    license: null
+    published_in_repo: true
+    notes: Local delegate wrapper for bounded Antigravity CLI work.
+
+  - name: hytale-modder
+    status: owned
+    author: DevBD1
+    source_url: https://github.com/DevBD1/skills/tree/main/hytale-modder
+    install_command: null
+    license: null
+    published_in_repo: true
+    notes: Local Hytale modding guidance and references.
+
+  - name: repo-bootstrap-pipeline
+    status: owned
+    author: DevBD1
+    source_url: https://github.com/DevBD1/skills/tree/main/repo-bootstrap-pipeline
+    install_command: null
+    license: null
+    published_in_repo: true
+    notes: Local repo bootstrap workflow and starter skill templates.
+
+  - name: antivibe
+    status: third-party
+    author: mohi-devhub
+    source_url: https://github.com/mohi-devhub/antivibe
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Installed locally; documented as a pointer only.
+
+  - name: crawl4ai
+    status: unknown-third-party
+    author: unknown
+    source_url: null
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Installed locally; keep pointer-only until source and license are confirmed.
+
+  - name: design-md
+    status: unknown-third-party
+    author: unknown
+    source_url: null
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Installed locally; keep pointer-only until source and license are confirmed.
+
+  - name: docker-expert
+    status: unknown-third-party
+    author: community
+    source_url: null
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Local metadata marks source as community and risk as unknown.
+
+  - name: find-skills
+    status: unknown-third-party
+    author: skills.sh
+    source_url: https://skills.sh/
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Skill discovery helper; source pointer only.
+
+  - name: grill-me
+    status: unknown-third-party
+    author: unknown
+    source_url: null
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Installed locally; keep pointer-only until source and license are confirmed.
+
+  - name: stitch-design
+    status: unknown-third-party
+    author: unknown
+    source_url: null
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Installed locally; keep pointer-only until source and license are confirmed.
+
+  - name: supabase
+    status: third-party
+    author: Supabase
+    source_url: null
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Installed Supabase skill; source pointer only.
+
+  - name: supabase-postgres-best-practices
+    status: third-party
+    author: Supabase
+    source_url: null
+    install_command: null
+    license: MIT
+    published_in_repo: false
+    notes: Installed Supabase Postgres guidance; source pointer only.
+
+  - name: vercel-react-best-practices
+    status: third-party
+    author: Vercel
+    source_url: https://skills.sh/vercel-labs/agent-skills/react-best-practices
+    install_command: npx skills add https://github.com/vercel-labs/agent-skills --skill react-best-practices
+    license: MIT
+    published_in_repo: false
+    notes: Installed Vercel React performance guidance; source pointer only.
+
+  - name: view-pdf
+    status: unknown-third-party
+    author: unknown
+    source_url: null
+    install_command: null
+    license: unknown
+    published_in_repo: false
+    notes: Installed locally; keep pointer-only until source and license are confirmed.
+
+  - name: web-design-guidelines
+    status: third-party
+    author: Vercel
+    source_url: https://github.com/vercel-labs/web-interface-guidelines
+    install_command: npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines
+    license: unknown
+    published_in_repo: false
+    notes: Installed Vercel Labs web design review guidance; source pointer only.

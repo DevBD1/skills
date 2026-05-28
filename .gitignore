@@ -13,3 +13,18 @@ temp/
 cache/
 dist/
 build/
+
+# Pointer-only locally installed skills. These remain available in the live
+# ~/.agents/skills directory, but their copied source is not published here.
+antivibe/
+crawl4ai/
+design-md/
+docker-expert/
+find-skills/
+grill-me/
+stitch-design/
+supabase/
+supabase-postgres-best-practices/
+vercel-react-best-practices/
+view-pdf/
+web-design-guidelines/

@@ -1,54 +1,59 @@
 # Skills
 
-Reusable global AI agent skills I use across workspaces.
+Curated global AI agent skills I use across workspaces.
 
-This repository is the live contents of `~/.agents/skills`. Each top-level
-folder is an active global skill with its own `SKILL.md`.
+This repository is backed by the live `~/.agents/skills` directory, but it is
+not a claim of authorship over every skill I use. Only folders marked as
+`owned` are published here as source I maintain. Third-party and unclear-origin
+skills are documented as install/reference pointers instead of being published
+as copied source.
 
 ## Rules
 
-- Keep reusable skills here.
+- Keep reusable global skills here.
 - Keep repo-specific workflow, product, style, and design rules inside that repo.
-- Keep the installed layout flat: one skill folder per top-level directory.
-- Use README sections and tags for grouping instead of moving active skills into nested folders.
-- Preserve source and license notes for third-party skills.
-- Mark modified third-party skills as modified forks when documenting them.
+- Keep the live installed layout flat: one skill folder per top-level directory.
+- Group skills by README sections and manifest tags, not folder nesting.
+- Preserve source, author, and license notes for third-party skills.
+- Do not publish third-party skill contents unless redistribution is intentional
+  and the license/source is clear.
 
-## Skills
+## Published Source
 
-### Development and Reviews
+These skills are currently published as full folders in this repo.
 
-- `antivibe` - learning-focused explanations for AI-written code.
-- `gemini-cli-delegate` - delegate bounded planning, review, research, and worktree implementation tasks to Gemini CLI.
-- `grill-me` - plan and design stress testing through focused questions.
-- `repo-bootstrap-pipeline` - bootstrap repo docs, routing rules, and local agent skills.
-- `vercel-react-best-practices` - focused React and Next.js performance review guidance.
-- `web-design-guidelines` - UI, UX, accessibility, and design review guidance.
+| Skill | Status | Notes |
+| --- | --- | --- |
+| `antigravity-cli-delegate` | owned | Local delegate wrapper for bounded Antigravity CLI work. |
+| `hytale-modder` | owned | Local Hytale modding guidance and references. |
+| `repo-bootstrap-pipeline` | owned | Local repo bootstrap workflow and starter skill templates. |
 
-### Data and Platforms
+## Pointer-Only Skills
 
-- `crawl4ai` - web crawling and structured extraction workflows.
-- `docker-expert` - Docker containerization, Compose, image optimization, and production hardening guidance.
-- `supabase` - Supabase implementation guidance.
-- `supabase-postgres-best-practices` - Postgres performance guidance from Supabase.
-- `view-pdf` - interactive PDF viewing, annotation, form filling, and visual review.
+These skills are installed locally but are not published as copied source in
+this repo. They are listed in `skills.yml` so the collection remains visible
+without claiming ownership.
 
-### Design and Domain Skills
+| Skill | Status | Author / Source | Notes |
+| --- | --- | --- | --- |
+| `antivibe` | third-party | mohi-devhub / GitHub | Installed framework; source pointer only. |
+| `crawl4ai` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
+| `design-md` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
+| `docker-expert` | unknown-third-party | community | Local metadata marks this as community/unknown. |
+| `find-skills` | unknown-third-party | skills.sh | Skill discovery helper; source pointer only. |
+| `grill-me` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
+| `stitch-design` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
+| `supabase` | third-party | Supabase | Installed Supabase skill; source pointer only. |
+| `supabase-postgres-best-practices` | third-party | Supabase / MIT | Installed Supabase Postgres guidance; source pointer only. |
+| `vercel-react-best-practices` | third-party | Vercel / MIT | Installed Vercel React performance guidance; source pointer only. |
+| `view-pdf` | unknown-third-party | unknown | Keep pointer-only until source/license is confirmed. |
+| `web-design-guidelines` | third-party | Vercel | Installed from Vercel Labs agent skills; source pointer only. |
 
-- `design-md` - synthesize Stitch design systems into `DESIGN.md`.
-- `stitch-design` - Stitch MCP design generation and prompt workflow.
-- `hytale-modder` - Hytale modding guidance for ECS, threading, and KuksoHyLib.
+## Manifest
 
-### Skill Discovery
-
-- `find-skills` - skill discovery helper.
-
-## Source Notes
-
-Some skills are original or locally adapted. Some are copied or derived from
-third-party sources. Check each skill folder for its own metadata, README, and
-license files. A root license is intentionally not used because this collection
-contains mixed-origin material.
+`skills.yml` is the source of truth for ownership metadata. Each entry records
+the skill name, ownership status, author/source, install command when known,
+license, whether source is published in this repo, and notes.
 
 ## Before Publishing Changes
 
@@ -58,6 +63,7 @@ Run:
 find . -name ".DS_Store" -o -name ".git"
 rg -n "token|secret|password|api[_-]?key|/Users/burak|localhost|127\\.0\\.0\\.1|sk-|ghp_" .
 find . -maxdepth 2 -name SKILL.md -print | sort
+git status --short --branch
 ```
 
 Expected:
@@ -65,4 +71,5 @@ Expected:
 - no nested `.git`
 - no `.DS_Store`
 - no real secrets
-- every active skill has a `SKILL.md`
+- local installed skills still have `SKILL.md`
+- public git index contains only owned skill folders plus repo docs
