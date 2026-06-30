@@ -1,0 +1,77 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version from <version-source>
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate release inputs
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="${{ inputs.version }}"
+
+          if [[ "${GITHUB_REF_NAME}" != "<release-branch>" ]]; then
+            echo "Run releases from <release-branch>, not ${GITHUB_REF_NAME}" >&2
+            exit 1
+          fi
+
+          source_version="$(
+            <version-read-command>
+          )"
+          source_version="$(printf '%s' "$source_version" | tr -d '[:space:]')"
+          if [[ "$source_version" != "$version" ]]; then
+            echo "<version-source> contains '$source_version', expected '$version'" >&2
+            exit 1
+          fi
+
+          tag_template="<tag-format>"
+          tag="${tag_template//<version>/$version}"
+          if [[ "$tag" == *'<'* || "$tag" == *'>'* ]]; then
+            echo "Tag format still contains unresolved placeholders: $tag" >&2
+            exit 1
+          fi
+
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null 2>&1; then
+            echo "Tag already exists: $tag" >&2
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Build release artifacts
+        run: <release-build-command>
+
+      - name: Create release tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${{ steps.release.outputs.tag }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "$tag"
+          git push origin "$tag"
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.release.outputs.tag }}
+          name: ${{ steps.release.outputs.tag }}
+          generate_release_notes: true
+          files: <artifact-glob>
