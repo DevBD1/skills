@@ -1,0 +1,4 @@
+interface:
+  display_name: "Continuous Dev Cycle"
+  short_description: "Standardize repo planning and release flow"
+  default_prompt: "Use $continuous-dev-cycle to standardize this repository's idea-to-release workflow."
