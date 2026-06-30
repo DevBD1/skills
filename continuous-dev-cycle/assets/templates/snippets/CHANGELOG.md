@@ -4,7 +4,8 @@
 - Use repo-specific module, package, app, or area labels.
 - Link final release entries to the sprint docs that produced the shipped work.
 - Keep sprint work logs in `docs/sprints/`; keep final release history here.
-- Use `docs/releases/` for release prep and publishing rules.
+- Use `docs/releases/` for release prep, release channels, and publishing rules.
+- For SaaS or private platforms, track external release-note channels such as product changelog, blog, docs, customer email, social post, or internal announcement.
 
 ## [Unreleased]
 
@@ -19,6 +20,10 @@
 ### Fixed
 
 - _No unreleased fixes yet._
+
+### Config, Permissions, And Migrations
+
+- _No unreleased config, permission, or migration changes yet._
 
 ### Sprint Links
 

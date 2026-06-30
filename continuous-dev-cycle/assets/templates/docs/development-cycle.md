@@ -1,11 +1,11 @@
 # Development Cycle
 
-This repository uses a lightweight, traceable development cycle. The goal is not ceremony; the goal is making every meaningful idea, implementation, validation step, PR, and release easy to follow later.
+This repository uses a lightweight, traceable development cycle. The goal is not ceremony; the goal is making every meaningful idea, implementation, validation step, PR or review, and release easy to follow later.
 
 ## Full Cycle
 
 ```text
-idea -> backlog -> sprint -> implementation -> validation -> changelog -> PR -> merge -> release prep -> release
+idea -> backlog -> sprint -> implementation -> validation -> changelog -> PR/review -> merge -> release prep -> tag/release/publish
 ```
 
 ## 1. Capture The Idea
@@ -40,13 +40,13 @@ Run the smallest relevant validation command, such as:
 git diff --check
 ```
 
-Record the result in the sprint item and PR.
+Record the result in the sprint item and PR or review notes.
 
 ## 5. Update Release Records
 
-If the work is user-visible or release-relevant, update `CHANGELOG.md` under `Unreleased` and link the sprint doc.
+If the work is user-visible, operator-visible, or release-relevant, update `CHANGELOG.md` under `Unreleased` and link the sprint doc. For SaaS or private platforms, also record external release-note channels such as product changelog, blog, docs, customer email, social post, or internal announcement.
 
-## 6. Open The PR
+## 6. Open The PR Or Review
 
 Use Conventional Commit style:
 
@@ -54,8 +54,8 @@ Use Conventional Commit style:
 type(scope): summary
 ```
 
-Use the PR template and include changed areas, sprint/backlog link, validation, changelog impact, release/version impact, and risks.
+Use the PR template or repo review process and include changed areas, sprint/backlog link, validation, changelog impact, release/version impact, config/permission/migration impact, release channel, and risks.
 
 ## 7. Merge And Release
 
-After review and CI pass, merge to main/trunk. When ready to ship, open a release prep PR, finalize changelog entries, update `<version-source>`, validate, merge, then publish the release using the repo's release process.
+After review and CI pass, merge to the release branch. When ready to ship, open a release prep PR, finalize changelog entries or external release notes, update `<version-source>` if applicable, validate, merge, then publish through the repo's selected release channel.

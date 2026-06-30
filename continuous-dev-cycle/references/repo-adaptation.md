@@ -7,10 +7,10 @@ Use this reference when applying the workflow to a repo that is not already shap
 Before proposing changes, inspect:
 
 - Git status and branch.
-- Existing `README`, `AGENTS`, product/roadmap docs, changelog, release docs, and contribution docs.
-- Package manifests, build files, CI workflows, deployment files, and PR templates.
-- Version sources: package manifests, `version.txt`, Gradle/Maven files, Cargo manifests, tags, or release workflows.
-- Existing tag format and recent commit messages.
+- Existing `README`, `AGENTS`, product/roadmap docs, changelog, release docs, contribution docs, and public-facing release notes.
+- Package manifests, build files, CI workflows, deployment files, hosting config, and PR templates.
+- Version sources: package manifests, `version.txt`, Gradle/Maven files, Cargo manifests, deployment versions, tags, or release workflows.
+- Existing tag format, release channels, recent commit messages, and deployment/release cadence.
 
 Do not ask where these files are until targeted inspection fails.
 
@@ -20,9 +20,11 @@ Adapt to existing names and conventions unless they are missing or clearly incom
 
 ## Common Repo Shapes
 
-- Single app/service: one product version, one release stream, app-specific validation.
+- Single app/service: one product stream, deployment-focused validation, optional versioning.
 - Library/SDK: API compatibility, changelog discipline, package publishing, docs generation.
-- Monorepo: module/package-specific backlog items, versions, validation commands, release targets.
+- Public plugin/artifact repo: artifact builds, admin/operator notes, tags, and GitHub or registry release channels.
+- Private SaaS/platform: deployment records, customer-facing changelog/blog/social copy, internal rollback/audit trail.
+- Monorepo: module/package-specific backlog items, versions, validation commands, release targets, and mixed release channels.
 - Local-only repo: keep release workflow documentation, but omit hosted PR/CI pieces unless requested.
 - Non-GitHub repo: adapt PR template and release automation to the host; keep the same concepts.
 
@@ -32,10 +34,11 @@ When preferences are unknown and not discoverable, recommend:
 
 - Backlog under `docs/sprints/backlog.md`.
 - One-week lightweight Scrum.
-- `CHANGELOG.md` as release history.
+- `CHANGELOG.md` as release history or internal release notes.
 - Conventional Commits: `type(scope): summary`.
-- PR-first delivery.
-- Release prep PR before tags.
+- PR-first delivery when the repo already uses hosted review.
+- Release prep PR before tags, deploys, package publishes, or public changelog posts.
 - Versioning source already used by the repo.
+- No GitHub Release automation unless the release profile includes downloadable artifacts or GitHub-hosted releases.
 
 Record chosen defaults in docs and sprint assumptions.

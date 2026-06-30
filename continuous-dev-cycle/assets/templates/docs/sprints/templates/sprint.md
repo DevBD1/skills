@@ -25,8 +25,8 @@ State the single most important outcome for the sprint.
 - [ ] **Status:** Not started
 - **Module/area:** `<module-or-package>`
 - **User value:** Explain why this work matters.
-- **Release target:** `Unreleased`, future tag, or `Not release-relevant`.
-- **Changelog impact:** `Added`, `Changed`, `Fixed`, `Config And Permissions`, or `None`.
+- **Release target:** `Unreleased`, future tag/deploy/publish target, or `Not release-relevant`.
+- **Changelog impact:** `Added`, `Changed`, `Fixed`, `Config, Permissions, And Migrations`, or `None`.
 - **Acceptance criteria:**
   - [ ] Observable behavior or documentation outcome.
   - [ ] Edge case, compatibility, or config expectation.
@@ -44,6 +44,7 @@ State the single most important outcome for the sprint.
 - **Completed items:** List completed items and shipped artifacts.
 - **Verification:** Summarize commands and manual checks.
 - **Changelog status:** Note whether `CHANGELOG.md` was updated or why not.
+- **Release channel:** Note tag, artifact, deploy, package publish, external changelog, or why none applies.
 - **Not completed:** List incomplete items and why.
 
 ## Retro

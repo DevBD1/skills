@@ -25,10 +25,25 @@ jobs:
         run: |
           set -euo pipefail
           version="${{ inputs.version }}"
-          tag="<tag-prefix>-$version"
 
-          if [[ "${GITHUB_REF_NAME}" != "main" ]]; then
-            echo "Run releases from main, not ${GITHUB_REF_NAME}" >&2
+          if [[ "${GITHUB_REF_NAME}" != "<release-branch>" ]]; then
+            echo "Run releases from <release-branch>, not ${GITHUB_REF_NAME}" >&2
+            exit 1
+          fi
+
+          source_version="$(
+            <version-read-command>
+          )"
+          source_version="$(printf '%s' "$source_version" | tr -d '[:space:]')"
+          if [[ "$source_version" != "$version" ]]; then
+            echo "<version-source> contains '$source_version', expected '$version'" >&2
+            exit 1
+          fi
+
+          tag_template="<tag-format>"
+          tag="${tag_template//<version>/$version}"
+          if [[ "$tag" == *'<'* || "$tag" == *'>'* ]]; then
+            echo "Tag format still contains unresolved placeholders: $tag" >&2
             exit 1
           fi
 
@@ -41,7 +56,7 @@ jobs:
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
       - name: Build release artifacts
-        run: <validation-command>
+        run: <release-build-command>
 
       - name: Create release tag
         shell: bash

@@ -5,7 +5,7 @@ Use this reference when creating or operating the planning side of a continuous 
 ## Core Cycle
 
 ```text
-idea -> backlog -> sprint -> implementation -> validation -> changelog -> PR -> merge -> release prep -> tag/release
+idea -> backlog -> sprint -> implementation -> validation -> changelog -> PR/review -> merge -> release prep -> tag/release/publish
 ```
 
 Keep the process lightweight. The artifacts exist to preserve intent, decisions, validation, and release traceability.

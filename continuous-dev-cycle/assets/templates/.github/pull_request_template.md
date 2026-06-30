@@ -18,14 +18,20 @@
 
 ## Changelog
 
-- [ ] `CHANGELOG.md` updated for release-relevant or user-visible changes.
+- [ ] `CHANGELOG.md` updated for release-relevant, user-visible, or operator-visible changes.
 - [ ] Not release-relevant.
 
 ## Release And Version Impact
 
 - [ ] No version change.
 - [ ] Release prep PR updates version source.
-- [ ] Release target or tag:
+- [ ] Release channel or target:
+- [ ] Tag, deploy, publish, or external release-note target:
+
+## Config, Permissions, And Migrations
+
+- [ ] No config, permission, or migration impact.
+- [ ] Config, permission, or migration notes:
 
 ## Risks And Follow-ups
 
