@@ -1,69 +1,50 @@
 # Skills
 
-[![skills.sh](https://skills.sh/b/DevBD1/openclaw-skill-scrapling-mcp)](https://skills.sh/DevBD1/openclaw-skill-scrapling-mcp)
+[![skills.sh](https://skills.sh/b/DevBD1/skills)](https://skills.sh/DevBD1/skills)
 
-Curated AI agent skills I maintain and publish.
+Curated AI agent skills maintained by DevBD1.
 
-This repository is the DevBD1-owned skills collection. The local checkout lives
-under `~/.agents/skills/devbd1`; generic skills are managed outside this
-repository as sibling folders under `~/.agents/skills`.
+## Install
 
-## Rules
-
-- Keep DevBD1-owned reusable skills in this repository.
-- Keep generic skills outside this checkout, under `~/.agents/skills`.
-- Keep repo-specific workflow, product, style, and design rules inside that repo.
-
-## Repository Layout
-
-```text
-.
-├── README.md
-├── skills.yml
-├── .gitignore
-├── openclaw-skill-scrapling-mcp/
-├── antigravity-cli-delegate/
-├── codex-cli-delegate/
-├── continuous-dev-cycle/
-└── hytale-modder/
-```
-
-## Published Source
-
-These skills are currently published as full folders in this repo.
-
-| Skill | Status | Notes |
-| --- | --- | --- |
-| `openclaw-skill-scrapling-mcp` | owned | Scrapling MCP guidance, recipes, and helper scripts for web scraping workflows. |
-| `antigravity-cli-delegate` | owned / MIT | Local delegate wrapper for bounded Antigravity CLI work. |
-| `codex-cli-delegate` | owned / MIT | Local delegate wrapper for bounded Codex CLI work by other agents. |
-| `continuous-dev-cycle` | owned | Continuous development workflow templates and release planning guidance. |
-| `hytale-modder` | owned | Local Hytale modding guidance and references. |
-
-Owned published skill folders may include their own license files. The root
-repository intentionally has no blanket license; use each skill folder's own
-license and notes.
-
-## Manifest
-
-`skills.yml` is the source of truth for ownership metadata. Each entry records
-the skill name, ownership status, author/source, install command when known,
-license, and notes.
-
-## Before Publishing Changes
-
-Run:
+Install a skill from this repository with:
 
 ```bash
-find . -name ".DS_Store" -o -name ".git"
-rg -n "token|secret|password|api[_-]?key|\\$HOME|localhost|127\\.0\\.0\\.1|sk-|ghp_" .
-find . -maxdepth 2 -name SKILL.md -print | sort
-git status --short --branch
+npx skills add DevBD1/skills --skill <skill-name>
 ```
 
-Expected:
+Example:
 
-- no nested `.git`
-- no `.DS_Store`
-- no real secrets
-- public git index contains only owned skill folders plus repo docs
+```bash
+npx skills add DevBD1/skills --skill continuous-dev-cycle
+```
+
+## Available Skills
+
+| Skill | Purpose |
+| --- | --- |
+| `openclaw-skill-scrapling-mcp` | Scrapling MCP guidance, recipes, and helper scripts for web scraping workflows. Curated for OpenClaw. |
+| `antigravity-cli-delegate` | Delegate bounded work from an agent to the local Antigravity CLI. |
+| `codex-cli-delegate` | Delegate bounded work from an agent to the local Codex CLI. |
+| `continuous-dev-cycle` | Establish or operate a continuous development workflow for repositories. |
+| `hytale-modder` | Hytale modding guidance for Java ECS, threading, and KuksoHyLib conventions. |
+
+## What Each Skill Contains
+
+Each top-level skill folder includes a `SKILL.md` entrypoint. Some skills also
+include supporting material:
+
+- `references/` for detailed background and usage notes.
+- `scripts/` for helper scripts and smoke checks.
+- `assets/` for reusable templates or starter files.
+- `agents/` for agent configuration examples.
+
+## Metadata
+
+`skills.yml` provides the machine-readable catalog for this repository. It lists
+each published skill, source URL, install command, license status, and notes.
+
+## License
+
+Some skill folders include their own license files. This repository does not
+apply one blanket license to every skill; check the individual skill folder
+before reusing code or assets.

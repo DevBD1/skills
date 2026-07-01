@@ -2,8 +2,8 @@ skills:
   - name: openclaw-skill-scrapling-mcp
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/openclaw-skill-scrapling-mcp/tree/main/openclaw-skill-scrapling-mcp
-    install_command: npx skills add DevBD1/openclaw-skill-scrapling-mcp --skill openclaw-skill-scrapling-mcp
+    source_url: https://github.com/DevBD1/skills/tree/main/openclaw-skill-scrapling-mcp
+    install_command: npx skills add DevBD1/skills --skill openclaw-skill-scrapling-mcp
     license: null
     published_in_repo: true
     notes: Scrapling MCP guidance, recipes, and helper scripts for web scraping workflows.
@@ -11,8 +11,8 @@ skills:
   - name: antigravity-cli-delegate
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/openclaw-skill-scrapling-mcp/tree/main/antigravity-cli-delegate
-    install_command: npx skills add DevBD1/openclaw-skill-scrapling-mcp --skill antigravity-cli-delegate
+    source_url: https://github.com/DevBD1/skills/tree/main/antigravity-cli-delegate
+    install_command: npx skills add DevBD1/skills --skill antigravity-cli-delegate
     license: MIT
     published_in_repo: true
     notes: Local delegate wrapper for bounded Antigravity CLI work.
@@ -20,8 +20,8 @@ skills:
   - name: codex-cli-delegate
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/openclaw-skill-scrapling-mcp/tree/main/codex-cli-delegate
-    install_command: npx skills add DevBD1/openclaw-skill-scrapling-mcp --skill codex-cli-delegate
+    source_url: https://github.com/DevBD1/skills/tree/main/codex-cli-delegate
+    install_command: npx skills add DevBD1/skills --skill codex-cli-delegate
     license: MIT
     published_in_repo: true
     notes: Local delegate wrapper for bounded Codex CLI work by other agents.
@@ -29,8 +29,8 @@ skills:
   - name: continuous-dev-cycle
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/openclaw-skill-scrapling-mcp/tree/main/continuous-dev-cycle
-    install_command: npx skills add DevBD1/openclaw-skill-scrapling-mcp --skill continuous-dev-cycle
+    source_url: https://github.com/DevBD1/skills/tree/main/continuous-dev-cycle
+    install_command: npx skills add DevBD1/skills --skill continuous-dev-cycle
     license: null
     published_in_repo: true
     notes: Continuous development workflow templates and release planning guidance.
@@ -38,8 +38,8 @@ skills:
   - name: hytale-modder
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/openclaw-skill-scrapling-mcp/tree/main/hytale-modder
-    install_command: npx skills add DevBD1/openclaw-skill-scrapling-mcp --skill hytale-modder
+    source_url: https://github.com/DevBD1/skills/tree/main/hytale-modder
+    install_command: npx skills add DevBD1/skills --skill hytale-modder
     license: null
     published_in_repo: true
     notes: Local Hytale modding guidance and references.
