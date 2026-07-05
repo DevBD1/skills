@@ -1,0 +1,50 @@
+name: Validate
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lint PR title (Conventional Commits)
+        shell: bash
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          set -euo pipefail
+          pattern='^(feat|fix|docs|refactor|test|build|ci|chore|release)(\([a-z0-9._/-]+\))?!?: .+'
+          if [[ ! "$PR_TITLE" =~ $pattern ]]; then
+            echo "PR title must follow Conventional Commits: type(scope): summary" >&2
+            echo "Got: $PR_TITLE" >&2
+            exit 1
+          fi
+
+      - name: Require changelog update or not-release-relevant label
+        shell: bash
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          if [[ ",${LABELS}," == *",not-release-relevant,"* ]]; then
+            echo "PR labeled not-release-relevant; skipping changelog check."
+            exit 0
+          fi
+          if git diff --name-only "$BASE_SHA"...HEAD | grep -qx 'CHANGELOG.md'; then
+            echo "CHANGELOG.md updated."
+          else
+            echo "CHANGELOG.md was not updated. Update it under Unreleased, or add the 'not-release-relevant' label." >&2
+            exit 1
+          fi
+
+      - name: Run validation
+        run: <validation-command>

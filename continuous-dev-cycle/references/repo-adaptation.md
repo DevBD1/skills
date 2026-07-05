@@ -18,6 +18,16 @@ Do not ask where these files are until targeted inspection fails.
 
 Adapt to existing names and conventions unless they are missing or clearly incomplete. Do not replace meaningful docs without showing the intended change. Never revert unrelated user changes.
 
+## Map Existing Docs Into The Hierarchy
+
+Before creating any hierarchy file, check whether its content already lives somewhere and fold it in rather than duplicating:
+
+- `ROADMAP`, `VISION`, `MISSION`, or strategy docs → durable content into `PRODUCT.md`; execution detail into `docs/sprints/` and `docs/releases/`.
+- Style guides, design docs, UX notes → `DESIGN.md` (only if the product has UI).
+- Existing `CONTRIBUTING`, `AGENT`, or bot-instruction files → route from `AGENTS.md`; keep `CLAUDE.md` a thin pointer.
+- Existing release/deploy runbooks → `docs/releases/README.md`.
+- Never overwrite an existing root `README.md`, `AGENTS.md`, or `CLAUDE.md` — audit against `doc-hierarchy.md` and patch the gaps.
+
 ## Common Repo Shapes
 
 - Single app/service: one product stream, deployment-focused validation, optional versioning.
@@ -35,6 +45,7 @@ When preferences are unknown and not discoverable, recommend:
 - Backlog under `docs/sprints/backlog.md`.
 - One-week lightweight Scrum.
 - `CHANGELOG.md` as release history or internal release notes.
+- Per-version scope contracts under `docs/releases/vX.Y.Z.md`.
 - Conventional Commits: `type(scope): summary`.
 - PR-first delivery when the repo already uses hosted review.
 - Release prep PR before tags, deploys, package publishes, or public changelog posts.

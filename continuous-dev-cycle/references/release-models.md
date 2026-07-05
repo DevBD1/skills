@@ -1,6 +1,17 @@
 # Release Models
 
-Use this reference before standardizing commits, PRs, versioning, changelog movement, tags, release notes, deployment records, or release automation.
+Use this reference before standardizing commits, PRs, versioning, release contracts, changelog movement, tags, release notes, deployment records, or release automation.
+
+## Release Scope Contracts
+
+Each planned version gets a contract file, `docs/releases/vX.Y.Z.md`, created from `assets/templates/docs/releases/templates/release.md`. A contract defines:
+
+- **Includes / excludes:** the scoped feature set and explicit non-goals for the version.
+- **Acceptance criteria:** observable outcomes that must hold before the version can ship.
+- **Lifecycle status:** `Draft` (scope forming) → `Committed` (scope locked, work underway) → `Shipped` (published); `Cancelled` if abandoned.
+- **Launch gate:** the checklist that must pass during release prep — validation green, changelog finalized, version source bumped, publish channel ready.
+
+Contracts are forward-looking scope; `CHANGELOG.md` is backward-looking shipped history. During release prep the changelog section is finalized from `Unreleased`, the contract's launch gate is satisfied, and after publishing the contract flips to `Shipped`. Keep the contract index in `docs/releases/README.md` current.
 
 ## Commits And PRs
 
@@ -56,12 +67,12 @@ For SaaS or private apps, record both internal changes and external publication 
 
 Use a release prep PR by default when the repo uses PRs:
 
-1. Confirm release-relevant work is represented in sprint docs.
-2. Finalize changelog entries or external release-note draft.
+1. Confirm release-relevant work is represented in sprint docs and the version's release contract.
+2. Finalize changelog entries or external release-note draft; link the contract.
 3. Update the version source if the release profile has one.
-4. Run relevant validation.
+4. Run relevant validation and satisfy the contract's launch gate.
 5. Merge to the release branch.
-6. Publish through the chosen release channel.
+6. Publish through the chosen release channel, then set the contract status to `Shipped`.
 
 ## Tags And Automation
 

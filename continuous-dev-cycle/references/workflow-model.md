@@ -5,7 +5,7 @@ Use this reference when creating or operating the planning side of a continuous 
 ## Core Cycle
 
 ```text
-idea -> backlog -> sprint -> implementation -> validation -> changelog -> PR/review -> merge -> release prep -> tag/release/publish
+idea -> backlog -> sprint -> implementation -> validation -> changelog + release contract -> PR/review -> merge -> release prep -> tag/release/publish
 ```
 
 Keep the process lightweight. The artifacts exist to preserve intent, decisions, validation, and release traceability.
@@ -33,9 +33,9 @@ Recommended filename:
 docs/sprints/YYYY-MM-DD-sprint-N.md
 ```
 
-Each non-trivial task should be tied to a sprint item before implementation. Sprint items should include status, module/area, user value, release target, changelog impact, acceptance criteria, and validation.
+Each non-trivial task should be tied to a sprint item before implementation. Sprint items should include status, module/area, user value, release target, changelog impact, acceptance criteria, and validation. The release target should name a release contract file (`docs/releases/vX.Y.Z.md`) or state `Not release-relevant`.
 
-Use the work log for meaningful changes only:
+Keep the work log as dated bullets per item — bullets append cleanly across many sessions, tables do not. Log meaningful changes only:
 
 - Progress that changes status.
 - Blockers.

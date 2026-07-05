@@ -1,6 +1,6 @@
 # Release Workflow
 
-This repository releases through the selected release profile: tags, artifacts, package publishing, deployments, external changelog posts, or internal release notes.
+This repository releases through the selected release profile: tags, artifacts, package publishing, deployments, external changelog posts, or internal release notes. Each planned version gets a scope contract file in this directory.
 
 For the full idea-to-release flow, see `../development-cycle.md`.
 
@@ -10,6 +10,26 @@ For the full idea-to-release flow, see `../development-cycle.md`.
 - Audience: developers, admins/operators, end users, customers, internal team, or mixed.
 - Release channel: GitHub Release, package registry, deployment, platform changelog, blog/social/customer announcement, PR merge only, or custom.
 - Release branch: `<release-branch>`.
+
+## Version Contracts
+
+Every planned version has a contract, `docs/releases/vX.Y.Z.md`, created from `templates/release.md`. A contract defines what the version includes and excludes, its acceptance criteria, and its launch gate.
+
+Lifecycle: `Draft` (scope forming) → `Committed` (scope locked, work underway) → `Shipped` (published). Use `Cancelled` for abandoned versions. Scope changes after `Committed` are recorded in the contract's lifecycle log.
+
+### Contract Index
+
+| Version | Status | Target |
+| --- | --- | --- |
+| _No contracts yet._ | | |
+
+## Changelog Tracking Rules
+
+- Use `## [Unreleased]` in `CHANGELOG.md` for release-relevant work that has not shipped yet.
+- Use repo-specific module, package, app, or area labels in entries.
+- Link entries to the sprint docs that produced the work; link finalized release sections to their version contract.
+- Keep sprint work logs in `docs/sprints/`; keep final release history in `CHANGELOG.md`.
+- For SaaS or private platforms, also track external release-note channels: product changelog, blog, docs, customer email, social post, or internal announcement.
 
 ## Versioning
 
@@ -21,12 +41,12 @@ For the full idea-to-release flow, see `../development-cycle.md`.
 
 ## Release Prep PR
 
-1. Confirm release-relevant work is represented in `docs/sprints/`.
-2. Move relevant `CHANGELOG.md` entries from `Unreleased` into the final release section or external release-note draft.
+1. Confirm release-relevant work is represented in `docs/sprints/` and the version contract.
+2. Move relevant `CHANGELOG.md` entries from `Unreleased` into the final release section or external release-note draft; link the contract.
 3. Update `<version-source>` when this release profile has a version source.
-4. Run `<validation-command>`.
+4. Run `<validation-command>` and satisfy the contract's launch gate.
 5. Merge the release prep PR to `<release-branch>`.
-6. Publish through the selected release channel.
+6. Publish through the selected release channel, then set the contract status to `Shipped` and update the index above.
 
 ## Tags, Releases, And Publishing
 

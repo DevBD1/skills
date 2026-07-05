@@ -14,17 +14,19 @@ Sprint files use:
 docs/sprints/YYYY-MM-DD-sprint-N.md
 ```
 
+The date is the sprint start date (files sort chronologically); `N` is a running sprint number for human reference.
+
 ## Backlog
 
 Use `docs/sprints/backlog.md` for candidate work before sprint commitment. Keep items concise but implementation-ready: module/area, user value, acceptance criteria, and validation.
 
 ## Sprint Planning
 
-At sprint start, define sprint goal, dates, assumptions, committed items, acceptance criteria, release target, changelog impact, and validation expectations.
+At sprint start, define sprint goal, dates, assumptions, committed items, acceptance criteria, release target (a version contract in `docs/releases/` or `Not release-relevant`), changelog impact, and validation expectations.
 
 ## Work Log
 
-Record meaningful updates: status changes, blockers, scope changes, decisions, and verification results. Do not log every small edit.
+Record meaningful updates as dated bullets: status changes, blockers, scope changes, decisions, and verification results. Do not log every small edit.
 
 ## Review And Retro
 

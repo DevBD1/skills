@@ -25,8 +25,8 @@ State the single most important outcome for the sprint.
 - [ ] **Status:** Not started
 - **Module/area:** `<module-or-package>`
 - **User value:** Explain why this work matters.
-- **Release target:** `Unreleased`, future tag/deploy/publish target, or `Not release-relevant`.
-- **Changelog impact:** `Added`, `Changed`, `Fixed`, `Config, Permissions, And Migrations`, or `None`.
+- **Release target:** `docs/releases/vX.Y.Z.md` or `Not release-relevant`.
+- **Changelog impact:** `Added`, `Changed`, `Fixed`, `Deprecated`, `Removed`, `Security`, or `None`.
 - **Acceptance criteria:**
   - [ ] Observable behavior or documentation outcome.
   - [ ] Edge case, compatibility, or config expectation.
@@ -35,9 +35,9 @@ State the single most important outcome for the sprint.
 
 ## Work Log
 
-| Date | Item | Update | Blockers/Decisions |
-| --- | --- | --- | --- |
-| YYYY-MM-DD | Item 1 | Initial note. | None. |
+Dated bullets per item; log status changes, blockers, scope changes, decisions, and verification results — not every edit.
+
+- YYYY-MM-DD — Item 1: Initial note.
 
 ## Review
 

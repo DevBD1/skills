@@ -10,6 +10,10 @@
 
 -
 
+## Release Contract
+
+- Target version contract (`docs/releases/vX.Y.Z.md`) or `Not release-relevant`:
+
 ## Validation
 
 - [ ] Smallest relevant command:
@@ -19,7 +23,7 @@
 ## Changelog
 
 - [ ] `CHANGELOG.md` updated for release-relevant, user-visible, or operator-visible changes.
-- [ ] Not release-relevant.
+- [ ] Not release-relevant (add the `not-release-relevant` label so CI validation passes).
 
 ## Release And Version Impact
 
