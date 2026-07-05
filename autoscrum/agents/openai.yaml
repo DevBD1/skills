@@ -1,0 +1,4 @@
+interface:
+  display_name: "Autoscrum"
+  short_description: "Standardize repo planning and release flow"
+  default_prompt: "Use $autoscrum to standardize this repository's idea-to-release workflow."

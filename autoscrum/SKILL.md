@@ -1,9 +1,9 @@
 ---
-name: continuous-dev-cycle
+name: autoscrum
 description: Establish, operate, or repair a repository's continuous AI-assisted development workflow and document hierarchy. Use when asked to set up or standardize lightweight Scrum, backlog and sprint docs, changelog and release history, release scope contracts, PRODUCT.md, AGENTS.md, CLAUDE.md, DESIGN.md, Conventional Commits, pull request templates, CI validation, versioning, release prep, release channels, tags, GitHub Actions releases, platform changelogs, doc hierarchy audits, or an end-to-end idea-to-release development cycle across one or more repositories.
 ---
 
-# Continuous Dev Cycle
+# Autoscrum
 
 Use this skill to make a repo's development loop explicit, traceable, and provable through docs: idea capture, sprint planning, implementation, validation, changelog and release contracts, PR or review, merge, release prep, publish.
 
