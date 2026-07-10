@@ -15,7 +15,7 @@ npx skills add DevBD1/skills --skill <skill-name>
 Example:
 
 ```bash
-npx skills add DevBD1/skills --skill continuous-dev-cycle
+npx skills add DevBD1/skills --skill autoscrum
 ```
 
 ## Available Skills
@@ -25,7 +25,9 @@ npx skills add DevBD1/skills --skill continuous-dev-cycle
 | `openclaw-skill-scrapling-mcp` | Scrapling MCP guidance, recipes, and helper scripts for web scraping workflows. Curated for OpenClaw. |
 | `antigravity-cli-delegate` | Delegate bounded work from an agent to the local Antigravity CLI. |
 | `codex-cli-delegate` | Delegate bounded work from an agent to the local Codex CLI. |
-| `continuous-dev-cycle` | Establish or operate a continuous development workflow for repositories. |
+| `autoscrum` | Establish, operate, or repair a repository's continuous AI-assisted development workflow and document hierarchy. |
+| `xpost` | Algorithm Edge — code-grounded guide and draft optimizer for high-performing X (Twitter) posts, grounded in X's open-sourced 2026 recommendation algorithm. |
+| `buildcast` | Turn a repository into a build-in-public content engine: versioned post log, metrics + retros, playbook, reply engine, and an AGENTS.md binding so agents propose post ideas from real milestones. |
 | `hytale-modder` | Hytale modding guidance for Java ECS, threading, and KuksoHyLib conventions. |
 
 ## What Each Skill Contains

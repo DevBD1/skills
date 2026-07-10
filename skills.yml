@@ -26,14 +26,23 @@ skills:
     published_in_repo: true
     notes: Local delegate wrapper for bounded Codex CLI work by other agents.
 
-  - name: continuous-dev-cycle
+  - name: autoscrum
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/skills/tree/main/continuous-dev-cycle
-    install_command: npx skills add DevBD1/skills --skill continuous-dev-cycle
+    source_url: https://github.com/DevBD1/skills/tree/main/autoscrum
+    install_command: npx skills add DevBD1/skills --skill autoscrum
     license: null
     published_in_repo: true
-    notes: Continuous development workflow templates and release planning guidance.
+    notes: Establish, operate, or repair a repository's continuous AI-assisted development workflow and document hierarchy.
+
+  - name: xpost
+    status: owned
+    author: DevBD1
+    source_url: https://github.com/DevBD1/skills/tree/main/xpost
+    install_command: npx skills add DevBD1/skills --skill xpost
+    license: null
+    published_in_repo: true
+    notes: Algorithm Edge — code-grounded guide and draft optimizer for high-performing X posts, grounded in X's open-sourced 2026 recommendation algorithm.
 
   - name: hytale-modder
     status: owned
@@ -43,3 +52,12 @@ skills:
     license: null
     published_in_repo: true
     notes: Local Hytale modding guidance and references.
+
+  - name: buildcast
+    status: owned
+    author: DevBD1
+    source_url: https://github.com/DevBD1/skills/tree/main/buildcast
+    install_command: npx skills add DevBD1/skills --skill buildcast
+    license: null
+    published_in_repo: true
+    notes: Build-in-public content engine — versioned post log, metrics and retros, playbook, reply engine, AGENTS.md idea-capture binding.
