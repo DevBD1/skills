@@ -1,0 +1,4 @@
+interface:
+  display_name: "LoopScrum"
+  short_description: "Run proof-backed continuous AI development loops"
+  default_prompt: "Use $loopscrum to run or adapt a resumable, proof-backed development loop for this repository."

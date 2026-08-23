@@ -35,6 +35,15 @@ skills:
     published_in_repo: true
     notes: Establish, operate, or repair a repository's continuous AI-assisted development workflow and document hierarchy.
 
+  - name: loopscrum
+    status: owned
+    author: DevBD1
+    source_url: https://github.com/DevBD1/skills/tree/main/loopscrum
+    install_command: npx skills add DevBD1/skills --skill loopscrum
+    license: null
+    published_in_repo: true
+    notes: Continuous AI development loop with durable state, dependency-derived selection, resumable slices, and proof-backed checkpoints.
+
   - name: xpost
     status: owned
     author: DevBD1
