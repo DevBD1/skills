@@ -42,7 +42,7 @@ skills:
     install_command: npx skills add DevBD1/skills --skill loopscrum
     license: null
     published_in_repo: true
-    notes: Continuous AI development loop with durable state, dependency-derived selection, resumable slices, and proof-backed checkpoints.
+    notes: Adapt existing issue/backlog workflows with saved project preferences, optional plans, clean migration, and one feature PR reviewed by the user before merge.
 
   - name: xpost
     status: owned

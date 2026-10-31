@@ -1,121 +1,144 @@
 ---
 name: loopscrum
-description: Build, operate, or repair a LoopScrum workflow that replaces sprint-planning overhead with durable repository state, dependency-derived work selection, resumable slices, and proof-backed checkpoints. Use for continuous AI development, cold-start/handoff workflows, ledger and active-task design, process setup, or drift reconciliation; do not invoke for ordinary feature implementation unless the user asks to run or adapt the loop.
+description: Set up, migrate, or operate a repository-specific issue/backlog workflow with saved preferences, optional plans, and one feature PR per work item. Use when asked to establish or run LoopScrum, or when repository instructions select it for development work.
 ---
 
 # LoopScrum
 
-Treat the repository as the workflow's control plane. The unit of progress is a
-small accepted slice that is implemented, verified, committed, and recorded so
-a fresh agent can resume without relying on conversation memory. Do not add
-calendar sprints or sprint-planning ceremonies unless the repository or user
-explicitly requires them.
+Make the project's work easy to find, carry out, and review. The user chooses
+where issues/backlog live and how much planning a task needs. Save those
+choices in the repository so future agents can work without repeating setup
+questions. LoopScrum coordinates work and delivery; planning methods belong
+to the model and harness.
 
 ## Route the request
 
-- **Establish or adapt**: inspect the repository's existing process, preserve
-  its stronger conventions, and propose the smallest durable state model. Add
-  or change workflow files only within the user's scope.
-- **Resume or operate**: follow the repository's declared cold-start order,
-  assert the environment, reconcile claims against live repositories, then
-  advance the existing active slice before selecting another one.
-- **Audit or repair**: run read-only drift checks first. Repair repository
-  truth, broken proofs, and stale links before tightening process. Do not close
-  unrelated audit gaps while an active slice is in flight.
+- **Set up or migrate:** inspect the current workflow, help the user choose a
+  work inventory, migrate it, archive the replaced process, and install a
+  discoverable repository configuration.
+- **Operate or resume:** read repository instructions and configuration, find
+  the requested or next work item, resolve whether to use a plan, implement,
+  and deliver one feature PR for user review.
+- **Repair:** reconcile configuration, tracker state, links, and actual PR
+  state. Fix the affected workflow without adopting a new system by surprise.
 
-Read [references/operating-model.md](references/operating-model.md) when
-designing the state files, adapting the loop to a new repository, or operating
-an iteration. Use the repository's own `AGENTS.md`, scripts, gates, and
-approval boundaries as authoritative; the reference is a pattern, not a reason
-to replace local rules.
+For setup/migration or state and delivery details, read
+[references/operating-model.md](references/operating-model.md). For a new
+configuration, adapt [assets/config.md](assets/config.md) into
+`.agents/skills/loopscrum/config.md` in the target repository. This is project
+configuration, not a second installed copy of the skill.
 
-When replacing a sprint-oriented workflow, keep the useful history and release
-discipline: map the backlog to the work ledger, map the current sprint item to
-the active checkpoint, move durable decisions and verification into the project
-record and row, and keep changelogs/release contracts as landing artifacts.
-Do not delete old sprint files until their links, historical purpose, and any
-tooling that parses them are understood. If a selector or trace harness still
-depends on sprint-shaped input, retain a compatibility layer or make replacing
-that dependency its own verified slice; never bypass the harness to make the
-workflow appear sprint-free.
+## Establish the workflow
 
-## Non-negotiable shape
+1. **Inspect before proposing.** Read repository instructions, contributor
+   and workflow docs, active plans, sprint records, issue/backlog files,
+   automation, branch/release rules, and connected trackers where available.
+   The current process may be Scrum, plan-and-implement, GitHub Issues and
+   Projects, Linear, another service, a custom system, or a mixture. Identify
+   active work, authoritative sources, and what depends on the old process.
+2. **Offer a simple choice.** Explain the current arrangement briefly, then
+   present suitable places to record problems: GitHub Issues with a GitHub
+   Project, Linear, repository Markdown such as `docs/issues.md` and/or
+   `docs/backlog.md`, or the user's preferred alternative. Recommend based on
+   the repository; do not force a provider. The user chooses before migration.
+   An explicit choice already given is sufficient; do not ask again.
+3. **Save project preferences.** Record the chosen source, lookup/selection
+   rules, missing-item behavior, plan preference, fast-mode behavior, durable
+   progress location, validation, feature branch target, release obligations,
+   and merge method. Infer established technical conventions from evidence;
+   ask only for consequential choices that are still unresolved.
+4. **Migrate and archive completely.** Transfer open work and useful plans to
+   the chosen system. Move superseded local process material into a dedicated
+   `docs/archive/loopscrum/<migration-id>/` directory, preserving provenance
+   and old-to-new mappings. Update active instructions, links, scripts, and CI
+   consumers together. Do not leave competing workflow instructions scattered
+   around the repository. Do not retain compatibility layers unless the user
+   explicitly requests them. Preserve product/release rules that remain valid.
+5. **Make cold starts discoverable.** Add a short binding to root `AGENTS.md`
+   or the harness's existing auto-read instruction file. It must point to the
+   config and describe issue lookup, plan choice, and the PR approval boundary.
+   Update existing alternate entrypoints that would otherwise teach the old
+   process. A config file alone is not sufficient discovery.
 
-Keep these concerns separate and durable:
+## Resolve preferences once
 
-1. **Work ledger** — one row per deliverable, with status, dependencies,
-   blockers, acceptance, implementation location, and a proof command. Keep
-   priority authored in one place and eligibility derived from the row data.
-2. **Active-task checkpoint** — one current slice, its branch/repository,
-   acceptance still open, blockers, verification already performed, and the
-   exact next action. Keep it short and resumable; it is not a session diary.
-3. **Project record** — durable invariants, maintainer decisions, boundaries,
-   and lessons learned. Do not bury reasoning in volatile task notes.
-4. **Local-state record** — untracked machine facts such as ports, containers,
-   credentials, and environment setup. Never commit secrets.
-5. **Repository contract** — `AGENTS.md` or the local equivalent describing
-   ownership, validation, and forbidden actions.
+Read `.agents/skills/loopscrum/config.md` at the start of work. Resolve routine
+choices from the current user instruction, then saved project preferences,
+then the defaults below. Follow applicable repository validation, contribution,
+and release rules; clarify a real conflict instead of silently bypassing them.
 
-Use closed vocabularies where a script parses a field. Make derived roll-ups
-and summaries reproducible from the ledger; never hand-count them.
+Do not ask about a choice already settled by the user or config. A per-task
+override, including "go fast", applies to that task; persist it only when the
+user asks for a lasting change. Fast mode can skip optional planning and
+ceremonies according to config, but does not imply merge approval or waive
+repository gates. If fast mode is not configured, resolve only the choices
+the user's wording actually settles.
 
-## Run the loop
+## Run a work item
 
-1. **Read the declared sources in order.** Find the repository's boot prompt or
-   runbook, then read its ledger, active checkpoint, durable record, local
-   state, and the target repository contract. Do not start with arbitrary
-   source files.
-2. **Inspect ownership and environment.** Check branches and dirty trees,
-   required services and variables, and any stale process that can answer a
-   request from an old build. A dirty tree owned by another writer is a
-   coordination boundary, not an invitation to clean it up.
-3. **Reconcile before choosing.** Run proofs for the active row, its
-   dependencies, and anything touched by the previous slice. Run the
-   repository's self-tests, trace/status checks, and floor/audit checks. Where
-   a ledger claim disagrees with a proof against the live repository, the
-   repository wins: correct the durable record and log the drift.
-4. **Resume before selecting.** If the active checkpoint names work with a
-   phase other than `not-started`, continue that work. Otherwise select the
-   highest authored-priority row whose dependencies are complete and whose
-   blockers are clear. Refuse contradictory priority/dependency data; do not
-   silently choose between them.
-5. **Do one slice.** Decide the smallest coherent boundary, implement it, add
-   the narrowest meaningful proof, and commit the product change. Do not turn a
-   row into a hidden mini-sprint.
-6. **Verify from repository truth.** Run the smallest relevant gates in a clean
-   tree with their required environment. Confirm that filtered commands really
-   execute the intended tests, that a missing test cannot produce a false
-   green, and that every new or claimed gate is perturbed when the local
-   process supports perturbation. A perturbation that stays green is a finding.
-7. **Land and harvest.** Follow the repository's review, CI, branch, release,
-   and promotion rules. Keep merge and other durable fact-making actions with
-   the orchestrator when the local contract requires it. After the slice is
-   durable, update the work ledger, changelog/release contract if applicable,
-   durable record, and active checkpoint; then prove the checkpoint is
-   resumable.
-8. **Continue or schedule.** If the row is incomplete, leave an exact next
-   action. If it is complete, clear the active checkpoint and let the selector
-   choose the next eligible row. If waiting on CI or another external event,
-   record what is being watched and use an appropriately paced wake-up.
+1. **Read and resume.** Load repository rules, config, and the configured
+   progress record. Check the branch, working tree ownership, and linked
+   issue/PR state. Resume a matching in-flight item when appropriate. If the
+   user requests different work, preserve the existing handoff before switching.
+2. **Find the problem.** For a user request, search the authoritative
+   issues/backlog by meaning as well as title/ID before starting implementation.
+   Reuse a matching item; avoid duplicates. If none exists, default to offering
+   to create one before proceeding. The user may choose creation or direct
+   implementation without an item; honor that choice. Saved authorization to
+   create or proceed directly also resolves this decision. Without a specific
+   request, select eligible work using saved priority, dependencies, blockers,
+   and ownership. Do not invent work when the inventory is empty.
+3. **Resolve the plan.** Look for a relevant plan linked from the item,
+   progress record, or `docs/plan/`. Reuse an applicable plan and implement it.
+   If the user explicitly requests direct implementation, proceed without a
+   plan. If no usable plan exists, apply the saved preference (`plan`, `direct`,
+   or `ask`); ask the user only when that decision remains unresolved. When
+   planning is chosen, let the model/harness govern its process and approvals,
+   and save the resulting Markdown plan at `docs/plan/<item-id-or-slug>.md`
+   unless the config specifies another location. LoopScrum neither prescribes
+   a planning technique nor adds its own plan approval ceremony. A plan-only
+   request ends with the plan and resumable state, not automatic implementation.
+4. **Implement and verify.** Follow the item scope and applicable plan, using
+   the repository's feature branch and validation conventions. Keep the plan,
+   implementation, tests, any required version/changelog changes, and ledger
+   updates on the same branch and in the same feature PR. Multiple commits or
+   sessions do not require multiple PRs. Record actual verification and any
+   blockers; do not claim checks that were skipped or could not run.
+5. **Deliver for review.** Open or update that feature PR against the target
+   established by the repo, whether `main`, `dev`, or another branch. Link the
+   work item and plan, summarize behavior, provide test/review instructions,
+   and update progress to awaiting review. Give the user the PR and a practical
+   way to review/test it. Wait for the user's approval/green light for this PR.
+6. **Finish after approval.** Apply review changes to the same PR. Once the
+   user has approved and repository gates are satisfied, merge or squash using
+   the repository's policy. Verify the result, update linked tracker/ledger
+   state according to its completion rules, and report the merge and remaining
+   release steps. Do not treat CI success as user approval or conflate merging
+   to `dev` with release to production.
 
-## Boundaries
+## Keep state small and truthful
 
-- Keep one writer per working tree. Read-only analysis may run concurrently;
-  delegated agents may produce bounded diffs or analyses, but only the
-  authorized orchestrator records verified facts, runs final gates, merges,
-  or changes ledger state.
-- Preserve unrelated dirty work. Never reset, discard, prune, overwrite, or
-  migrate data without explicit scope and a recoverable target.
-- Treat maintainer decisions, credentials, production data admission, stable
-  releases, `stage → main` promotion, deletion, spending, and other
-  irreversible or billable acts as stop points. Prepare the work and hand it
-  back rather than guessing.
-- A blocked row must not block the whole loop when another eligible row exists.
-  Record the blocker durably and continue. Halt the loop only for an unsafe or
-  unverifiable environment, an unknown writer, an unresolved repository
-  contradiction, or the local policy's explicit halt condition.
-- Do not promote `agent-checked` to maintainer sign-off. Only the maintainer's
-  explicit words can create a signed-off claim.
+The chosen issues/backlog system is the authoritative work inventory. Its
+fields or activity can also serve as the ledger and handoff; separate ledger,
+active-task, project-record, and machine-state files are not mandatory. If a
+local ledger is useful, store references and delivery evidence rather than
+maintaining another editable backlog. Retain enough durable state to identify
+the item (or explicitly untracked task), branch/PR, plan or direct choice,
+verification, blocker, review state, and next action.
 
-The goal is not a more elaborate planning system. It is a development process
-whose state survives compaction, sleep, handoff, and model changes.
+Prepare repository ledger updates inside the feature PR. Describe completion
+as conditional on merge while it is pending; never pre-record approval or a
+merge SHA. Actual merge facts can live in the PR/tracker, approved automation,
+or be reconciled on the next normal work branch. Do not open a bookkeeping PR
+just to record that the feature PR merged.
+
+One feature PR covers one coherent task, including tracking, planning,
+implementation, required version changes, and ledger updates. Do not create
+sequential administrative PRs for those stages. Mandatory repository promotion
+or release PRs remain part of that repository's delivery flow; explain the
+requirement and follow existing authorization rather than inventing extra PRs.
+
+Preserve unrelated dirty work and other writers' ownership. If a tracker is
+unavailable, report the lookup/update limitation and keep a resumable record;
+do not claim a search succeeded or silently create a replacement source of
+truth. Continue to another item only within the user's requested scope.
