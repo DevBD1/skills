@@ -30,6 +30,7 @@ npx skills add DevBD1/skills --skill autoscrum
 | `xpost` | Algorithm Edge — code-grounded guide and draft optimizer for high-performing X (Twitter) posts, grounded in X's open-sourced 2026 recommendation algorithm. |
 | `buildcast` | Turn a repository into a build-in-public content engine: versioned post log, metrics + retros, playbook, reply engine, and an AGENTS.md binding so agents propose post ideas from real milestones. |
 | `hytale-modder` | Hytale modding guidance for Java ECS, threading, and KuksoHyLib conventions. |
+| `shipkit` | Set up and operate project-specific mobile and web releases, environment promotion, release notes and delivery checks. |
 
 ## What Each Skill Contains
 

@@ -1,0 +1,14 @@
+# Release automation contract
+
+Adapt these invariants to the project's configured triggers and provider. Implement them in repository-owned scripts/workflows, not by depending on files in this user-scope skill installation.
+
+- PR checks/previews are read-only. Do not publish or expose privileged secrets to untrusted PR code. Run publication using trusted workflow code and explicit allowed refs with least-privilege permissions.
+- When versioned source publication is enabled, detect the intended increase against the configured prior revision on main. Check every authoritative version source and the matching changelog section. Avoid unrelated build triggers during a notes-only or workflow-only merge.
+- Resolve one full source SHA for each release. Read the version and authored notes from that immutable source; use trusted current publisher code for historical backfill. Never move an existing tag. Refuse a same-version tag or release that points at another source.
+- Publish reviewed notes deterministically. Attach GitHub notes and applicable channel text files plus a manifest with version/source identity and hashes of exact uploaded bytes. Source publication does not certify delivery or acceptance.
+- Make retries repair incomplete work for the same source without replacing immutable content or duplicating a release. Verify existing assets/manifest before reuse; fail on conflicting bytes. Define a stopping condition: conflicting source, content mismatch or ambiguous target needs investigation, not blind retries.
+- Serialize publication for the same version. When concurrent versions are possible, compute Latest from complete eligible releases by the configured version order, not job finish time; serialize or safely recompute that update. Require all intended assets to be uploaded and nonempty before marking a source release complete.
+- Backfill must require explicit version and full source SHA, check allowed branch ancestry and matching historical version/notes, and avoid triggering builds/deploys through legacy tag workflows. Audit existing publishers before enabling another one.
+- Qualify unchanged-version skips, PR previews, first publication, retry, source/tag conflict and an incomplete-release recovery where applicable. Use isolated fixtures or dry-runs; do not create dummy public tags/releases as tests.
+
+Record actual workflow names, commands, permissions, gates and recovery paths in `.shipkit/config.md`. Document required secret names without printing values. Install infrastructure configuration separately from claiming it has been activated or live-qualified. Use current authoritative provider documentation when implementing provider-specific APIs or actions.

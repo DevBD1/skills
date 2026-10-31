@@ -70,3 +70,12 @@ skills:
     license: null
     published_in_repo: true
     notes: Build-in-public content engine — versioned post log, metrics and retros, playbook, reply engine, AGENTS.md idea-capture binding.
+
+  - name: shipkit
+    status: owned
+    author: DevBD1
+    source_url: https://github.com/DevBD1/skills/tree/main/shipkit
+    install_command: npx skills add DevBD1/skills --skill shipkit
+    license: null
+    published_in_repo: true
+    notes: Project-specific mobile and web release setup and operation, with repo-owned configuration, environment promotion, release notes and delivery verification.
