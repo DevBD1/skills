@@ -6,7 +6,7 @@ skills:
     install_command: npx skills add DevBD1/skills --skill scrapling-mcp
     license: null
     published_in_repo: true
-    notes: Scrapling 0.5.x MCP guidance, recipes and Python helpers. Directory name is openclaw-skill-scrapling-mcp; SKILL.md name is scrapling-mcp; ClawHub slug is scrapling-web-scraping.
+    notes: Scrapling 0.5.x MCP guidance, recipes and Python helpers. Directory name is openclaw-skill-scrapling-mcp; SKILL.md name and target ClawHub slug are scrapling-mcp.
 
   - name: loopdocs
     status: owned

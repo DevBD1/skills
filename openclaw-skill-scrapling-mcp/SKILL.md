@@ -13,7 +13,7 @@ Inspect the installed version and live tool schema before using another series.
 
 Source: [DevBD1/skills](https://github.com/DevBD1/skills/tree/main/openclaw-skill-scrapling-mcp).
 The skill name stays `scrapling-mcp`; the ClawHub slug is
-`scrapling-web-scraping`. Neither is a Scrapling package or MCP tool name.
+`scrapling-mcp`. Neither is a Scrapling package or MCP tool name.
 
 ## Set up MCP
 
