@@ -35,14 +35,14 @@ skills:
     published_in_repo: true
     notes: Establish, operate, or repair a repository's continuous AI-assisted development workflow and document hierarchy.
 
-  - name: loopscrum
+  - name: loopdev
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/skills/tree/main/loopscrum
-    install_command: npx skills add DevBD1/skills --skill loopscrum
+    source_url: https://github.com/DevBD1/skills/tree/main/loopdev
+    install_command: npx skills add DevBD1/skills --skill loopdev
     license: null
     published_in_repo: true
-    notes: Adapt existing issue/backlog workflows with saved project preferences, optional plans, clean migration, and one feature PR reviewed by the user before merge.
+    notes: Repo-adapted development from work inventory through optional plans, implementation, validation and reviewed feature merge, with a release handoff to LoopShip.
 
   - name: xpost
     status: owned
@@ -71,11 +71,11 @@ skills:
     published_in_repo: true
     notes: Build-in-public content engine — versioned post log, metrics and retros, playbook, reply engine, AGENTS.md idea-capture binding.
 
-  - name: shipkit
+  - name: loopship
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/skills/tree/main/shipkit
-    install_command: npx skills add DevBD1/skills --skill shipkit
+    source_url: https://github.com/DevBD1/skills/tree/main/loopship
+    install_command: npx skills add DevBD1/skills --skill loopship
     license: null
     published_in_repo: true
-    notes: Project-specific mobile and web release setup and operation, with repo-owned configuration, environment promotion, release notes and delivery verification.
+    notes: Repo-adapted mobile and web release setup and operation, with environment promotion, builds, notes, publication and delivery evidence, complementary to LoopDev.

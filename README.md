@@ -26,11 +26,11 @@ npx skills add DevBD1/skills --skill autoscrum
 | `antigravity-cli-delegate` | Delegate bounded work from an agent to the local Antigravity CLI. |
 | `codex-cli-delegate` | Delegate bounded work from an agent to the local Codex CLI. |
 | `autoscrum` | Establish, operate, or repair a repository's continuous AI-assisted development workflow and document hierarchy. |
-| `loopscrum` | Adapt existing issue/backlog workflows with saved project preferences, optional plans, clean migration, and one feature PR reviewed by the user before merge. |
+| `loopdev` | Adapt repo-specific development: work inventory, optional plans, implementation, validation and one feature PR reviewed before merge; hand releases to LoopShip. |
 | `xpost` | Algorithm Edge — code-grounded guide and draft optimizer for high-performing X (Twitter) posts, grounded in X's open-sourced 2026 recommendation algorithm. |
 | `buildcast` | Turn a repository into a build-in-public content engine: versioned post log, metrics + retros, playbook, reply engine, and an AGENTS.md binding so agents propose post ideas from real milestones. |
 | `hytale-modder` | Hytale modding guidance for Java ECS, threading, and KuksoHyLib conventions. |
-| `shipkit` | Set up and operate project-specific mobile and web releases, environment promotion, release notes and delivery checks. |
+| `loopship` | Adapt repo-specific mobile/web releases: environments, promotion, builds, release notes, publication and delivery evidence; complement LoopDev. |
 
 ## What Each Skill Contains
 

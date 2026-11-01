@@ -1,0 +1,4 @@
+interface:
+  display_name: "LoopDev"
+  short_description: "Adapt development workflows through reviewed feature PRs"
+  default_prompt: "Use $loopdev to inspect this repository's workflow, save project preferences, and manage work through optional plans and one feature PR with user approval before merge."

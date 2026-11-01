@@ -1,0 +1,4 @@
+interface:
+  display_name: "LoopShip"
+  short_description: "Adapt and operate mobile and web release workflows"
+  default_prompt: "Use $loopship to inspect this project and set up its release workflow."

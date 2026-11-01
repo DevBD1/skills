@@ -1,4 +1,0 @@
-interface:
-  display_name: "LoopScrum"
-  short_description: "Adapt issue workflows and deliver work in one feature PR"
-  default_prompt: "Use $loopscrum to inspect this repository's workflow, save project preferences, and manage work through optional plans and one feature PR with user approval before merge."

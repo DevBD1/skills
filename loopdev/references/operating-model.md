@@ -1,7 +1,7 @@
 # Operating Model
 
 Use this reference for migration, project configuration, durable state, and
-delivery. The project chooses its tools; LoopScrum supplies the connection
+delivery. The project chooses its tools; LoopDev supplies the connection
 between recorded work, optional plans, implementation, and user review.
 
 ## Discovery and choice
@@ -42,7 +42,7 @@ Once the user has selected the target:
 3. Move still-useful plans to `docs/plan/` (or the configured path) and link
    them to their items. Archive obsolete plans with the superseded process.
 4. Move replaced local artifacts into a unique directory such as
-   `docs/archive/loopscrum/2026-10-22-scrum-migration/`. Preserve relative paths
+   `docs/archive/loopdev/2026-10-22-scrum-migration/`. Preserve relative paths
    where helpful and add an `index.md` with the old system, migration date,
    old-to-new item/file mapping, target inventory, and any unresolved work.
    Mark the archive historical and inactive; never load archived instructions
@@ -74,7 +74,7 @@ or release contracts.
 ## Project configuration and discovery
 
 Adapt [../assets/config.md](../assets/config.md) into the project's
-`.agents/skills/loopscrum/config.md`. Replace example values with observed or
+`.agents/skills/loopdev/config.md`. Replace example values with observed or
 selected values; remove unused alternatives. Keep it readable Markdown so
 agents from different harnesses can use it without a parser. If local tooling
 parses it, document and honor that project's schema.
@@ -82,7 +82,7 @@ parses it, document and honor that project's schema.
 Record choices once. When a preference is `ask`, ask only when that decision
 arises and has not already been answered for this task. Save durable preferences
 when requested; do not convert a one-time speed request into project policy.
-If an older LoopScrum installation has no config, derive candidate values from
+If an older LoopDev installation has no config, derive candidate values from
 its live rules and confirm only unresolved choices. Do not restart setup on
 every invocation.
 
@@ -92,8 +92,8 @@ substituting actual paths and preserving unrelated rules:
 ```markdown
 ## Work management
 
-This repository uses LoopScrum. Before development work, read
-`.agents/skills/loopscrum/config.md` and its linked progress/work inventory.
+This repository uses LoopDev. Before development work, read
+`.agents/skills/loopdev/config.md` and its linked progress/work inventory.
 Search that inventory for user-requested work; otherwise resume or select an
 eligible item. If a requested item is missing, follow the saved preference or
 offer to create it, allowing the user to proceed without tracking. Reuse a
@@ -130,7 +130,7 @@ the current item and code; an obsolete or unrelated plan is not a usable plan.
 When no usable plan exists, `plan` delegates planning to the current harness,
 `direct` proceeds to implementation, and `ask` presents that choice. The user's
 explicit direction settles it for the task. Save an obtained plan as Markdown
-and link it to the item/progress record. LoopScrum does not prescribe phases,
+and link it to the item/progress record. LoopDev does not prescribe phases,
 subagents, reasoning budgets, plan templates, or planning approvals.
 
 Untracked implementation is a valid user choice. Use a short request slug for
@@ -178,8 +178,9 @@ use existing authorized automation or the next normal work branch for literal
 post-merge facts. Do not push an extra bookkeeping commit to a protected branch
 or open a follow-up ledger PR just to record the merge.
 
-Include version changes in the feature PR when required. Perform tagging,
-publishing, and promotion only at the point required by repo policy and within
+Include version changes in the feature PR when required. Hand off tagging,
+publishing, and promotion to LoopShip when installed, otherwise follow the
+repository's existing release procedure. Use the owning release contract and
 the user's authorization; merging the feature PR is not blanket release
 authorization. Required promotion/release PRs are legitimate repository steps,
 not an excuse to split one task into administrative PRs. Report which delivery

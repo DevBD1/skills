@@ -1,4 +1,0 @@
-interface:
-  display_name: "Shipkit"
-  short_description: "Set up and operate mobile and web release flows"
-  default_prompt: "Use $shipkit to inspect this project and set up its release workflow."

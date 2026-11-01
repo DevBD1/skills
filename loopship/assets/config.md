@@ -1,6 +1,6 @@
-# Shipkit project contract
+# LoopShip project contract
 
-Template only. Adapt into the target repo at `.shipkit/config.md`; replace unresolved values with verified facts or mark them `unresolved` / `not applicable`. Do not execute template values. Keep this file concise and link detailed owning contracts. Never include secret values.
+Template only. Adapt into the target repo at `.agents/skills/loopship/config.md`; replace unresolved values with verified facts or mark them `unresolved` / `not applicable`. Do not execute template values. Keep this file concise and link detailed owning contracts. Never include secret values.
 
 ## Identity and authority
 
@@ -10,6 +10,19 @@ Template only. Adapt into the target repo at `.shipkit/config.md`; replace unres
 - Owning release, development and acceptance documents:
 - Last verified date and evidence links:
 - Installation state: draft / implemented / qualified; list outstanding activation prerequisites
+
+## Development integration and discovery
+
+- Auto-read binding: root `AGENTS.md` or the existing harness entrypoint:
+- Development owner: `.agents/skills/loopdev/config.md` if installed, otherwise
+  existing work/review instructions; reference instead of copying the backlog:
+- Feature target/review rules: link to development owner:
+- Release handoff and receipts location: existing issue/PR or release log:
+- Required handoff: exact candidate SHA, item/PR, version/build if applicable,
+  checks, remaining acceptance, target/action and existing authorization:
+- Completion mapping: implementation merge vs distribution/publication/acceptance:
+- Reconfiguration: record durable preferences here; per-task overrides expire
+  unless explicitly persisted. Repeat setup reuses existing resources/workflows.
 
 ## Branches and promotion
 

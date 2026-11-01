@@ -1,14 +1,14 @@
 ---
-name: loopscrum
-description: Set up, migrate, or operate a repository-specific issue/backlog workflow with saved preferences, optional plans, and one feature PR per work item. Use when asked to establish or run LoopScrum, or when repository instructions select it for development work.
+name: loopdev
+description: Set up, migrate, or operate a repository-specific issue/backlog workflow with saved preferences, optional plans, and one feature PR per work item. Use when asked to establish or run LoopDev, or when repository instructions select it for development work.
 ---
 
-# LoopScrum
+# LoopDev
 
 Make the project's work easy to find, carry out, and review. The user chooses
 where issues/backlog live and how much planning a task needs. Save those
 choices in the repository so future agents can work without repeating setup
-questions. LoopScrum coordinates work and delivery; planning methods belong
+questions. LoopDev coordinates development through the feature merge; planning methods belong
 to the model and harness.
 
 ## Route the request
@@ -22,11 +22,37 @@ to the model and harness.
 - **Repair:** reconcile configuration, tracker state, links, and actual PR
   state. Fix the affected workflow without adopting a new system by surprise.
 
+For rename migrations, read [references/migration.md](references/migration.md).
 For setup/migration or state and delivery details, read
 [references/operating-model.md](references/operating-model.md). For a new
 configuration, adapt [assets/config.md](assets/config.md) into
-`.agents/skills/loopscrum/config.md` in the target repository. This is project
+`.agents/skills/loopdev/config.md` in the target repository. This is project
 configuration, not a second installed copy of the skill.
+
+## Development and release boundary
+
+LoopDev owns the work inventory, selection, optional plans, implementation,
+feature validation, user review and the authorized feature merge. LoopShip
+owns release preparation, environment topology, promotion, build/distribution,
+source publication, store metadata, rollback and delivery evidence. Either
+skill can operate independently using the repository's owning rules.
+
+When `.agents/skills/loopship/config.md` exists, read its relevant release
+obligations and link it from the development config. Do not duplicate its
+environment commands, promotion methods or publication policy. LoopDev still
+includes required changelog/version inputs in the feature PR; it does not
+invent a version bump for every task or publish as a side effect of completion.
+Release-prep tasks can use the same inventory and PR discipline; the release
+contract governs their content and execution. Changes to release automation
+can be developed through LoopDev without activating it.
+
+At release handoff, retain the item/PR, exact candidate SHA, applicable
+version/build, verification, remaining acceptance, target action and existing
+authorization. LoopShip checks existing CI receipts before repeating actions.
+Keep merged implementation distinct from released/accepted delivery; close
+work according to configured acceptance, without a second editable backlog.
+A feature merge may trigger already configured CI, including deployments in a
+direct-to-main project; follow those gates and report their actual results.
 
 ## Establish the workflow
 
@@ -49,7 +75,7 @@ configuration, not a second installed copy of the skill.
    ask only for consequential choices that are still unresolved.
 4. **Migrate and archive completely.** Transfer open work and useful plans to
    the chosen system. Move superseded local process material into a dedicated
-   `docs/archive/loopscrum/<migration-id>/` directory, preserving provenance
+   `docs/archive/loopdev/<migration-id>/` directory, preserving provenance
    and old-to-new mappings. Update active instructions, links, scripts, and CI
    consumers together. Do not leave competing workflow instructions scattered
    around the repository. Do not retain compatibility layers unless the user
@@ -62,7 +88,7 @@ configuration, not a second installed copy of the skill.
 
 ## Resolve preferences once
 
-Read `.agents/skills/loopscrum/config.md` at the start of work. Resolve routine
+Read `.agents/skills/loopdev/config.md` at the start of work. Resolve routine
 choices from the current user instruction, then saved project preferences,
 then the defaults below. Follow applicable repository validation, contribution,
 and release rules; clarify a real conflict instead of silently bypassing them.
@@ -95,7 +121,7 @@ the user's wording actually settles.
    or `ask`); ask the user only when that decision remains unresolved. When
    planning is chosen, let the model/harness govern its process and approvals,
    and save the resulting Markdown plan at `docs/plan/<item-id-or-slug>.md`
-   unless the config specifies another location. LoopScrum neither prescribes
+   unless the config specifies another location. LoopDev neither prescribes
    a planning technique nor adds its own plan approval ceremony. A plan-only
    request ends with the plan and resumable state, not automatic implementation.
 4. **Implement and verify.** Follow the item scope and applicable plan, using
