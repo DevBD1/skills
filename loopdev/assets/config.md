@@ -61,6 +61,10 @@ between them without duplication.
 
 ## Release integration
 
+- Documentation owners: link the existing README/doc index and applicable
+  PRODUCT, DESIGN, architecture and contribution documents. LoopDocs can define
+  their roles; work inventory and execution preferences remain in this config
+  or its linked owners. Include affected documentation in the feature PR.
 - Release contract owner: `.agents/skills/loopship/config.md` when installed,
   otherwise the repository's existing release rulebook; link the actual owner.
 - Boundary: LoopDev owns feature work and integration review/merge; the release

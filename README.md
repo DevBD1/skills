@@ -15,7 +15,7 @@ npx skills add DevBD1/skills --skill <skill-name>
 Example:
 
 ```bash
-npx skills add DevBD1/skills --skill autoscrum
+npx skills add DevBD1/skills --skill loopdev
 ```
 
 ## Available Skills
@@ -23,14 +23,27 @@ npx skills add DevBD1/skills --skill autoscrum
 | Skill | Purpose |
 | --- | --- |
 | `openclaw-skill-scrapling-mcp` | Scrapling MCP guidance, recipes, and helper scripts for web scraping workflows. Curated for OpenClaw. |
-| `antigravity-cli-delegate` | Delegate bounded work from an agent to the local Antigravity CLI. |
-| `codex-cli-delegate` | Delegate bounded work from an agent to the local Codex CLI. |
-| `autoscrum` | Establish, operate, or repair a repository's continuous AI-assisted development workflow and document hierarchy. |
+| `loopdocs` | Define and maintain repository documentation roles, contents and links, including README, PRODUCT, DESIGN and agent instructions; complement LoopDev and LoopShip. |
 | `loopdev` | Adapt repo-specific development: work inventory, optional plans, implementation, validation and one feature PR reviewed before merge; hand releases to LoopShip. |
 | `xpost` | Algorithm Edge — code-grounded guide and draft optimizer for high-performing X (Twitter) posts, grounded in X's open-sourced 2026 recommendation algorithm. |
-| `buildcast` | Turn a repository into a build-in-public content engine: versioned post log, metrics + retros, playbook, reply engine, and an AGENTS.md binding so agents propose post ideas from real milestones. |
-| `hytale-modder` | Hytale modding guidance for Java ECS, threading, and KuksoHyLib conventions. |
+| `loopcast` | Build-in-public content layer: ideas and drafts grounded in development/release evidence, post history, metrics, retros, playbook and reply drafts. Formerly Buildcast. |
 | `loopship` | Adapt repo-specific mobile/web releases: environments, promotion, builds, release notes, publication and delivery evidence; complement LoopDev. |
+
+## Loop Skill Family
+
+- **LoopDocs** defines what repository documents contain, where authoritative
+  information lives, and how documents link and stay current. It replaces Autoscrum
+  as the documentation layer, without sprint tracking or release operations.
+- **LoopDev** manages work inventory, optional plans, implementation, validation,
+  and a feature PR through authorized merge.
+- **LoopShip** manages release policy, preparation, promotion, publication, and
+  delivery evidence.
+- **LoopCast** turns development and delivery evidence into content ideas and
+  drafts, preserving post history and lessons from metrics. It replaces Buildcast;
+  social publication remains manual.
+
+Each skill can be used independently. Together they reference owning documents
+instead of maintaining duplicate product, development, or release rules.
 
 ## What Each Skill Contains
 

@@ -15,6 +15,20 @@ Treat the project config as reviewed intent, not proof of live state or permissi
 
 ## Development and release boundary
 
+LoopDocs is the companion documentation layer: it defines the roles, contents
+and links of release documentation, CHANGELOG and other repository docs.
+LoopShip owns the release policy and verified delivery facts recorded in those
+documents. Reference their existing owners instead of copying mutable rules
+into README or agent instructions. Keep release documentation changes in the
+existing release scope/PR; no separate documentation handoff or LoopDocs
+installation is required for routine updates.
+
+When an existing content binding selects LoopCast, verified release receipts
+can supply a linked content idea. LoopCast owns social drafts and post history;
+release notes and publication receipts remain with LoopShip's owning rules.
+Content capture does not gate delivery, and release authorization does not
+authorize social posting. Do not describe pending promotion as shipped.
+
 LoopShip owns release preparation, environment topology, promotion, build and distribution, source publication, channel metadata, rollback and delivery evidence. LoopDev owns work lookup, plans, feature implementation/validation, the feature PR and its authorized integration merge. Read the companion config at `.agents/skills/loopdev/config.md` when present; neither skill requires the other to be installed.
 
 Keep promotion methods, environment gates and version/publication policy here or in linked release contracts. LoopDev should reference those owners rather than copy them. Release preparation may update version/changelog/notes in a single prep PR; reuse an existing work item, branch and PR when that scope already exists. Do not open a second PR merely because control passes between skills. Implementing new release infrastructure is development work that can use LoopDev's configured review flow; executing that infrastructure follows LoopShip's release contract.

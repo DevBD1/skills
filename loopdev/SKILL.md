@@ -31,6 +31,20 @@ configuration, not a second installed copy of the skill.
 
 ## Development and release boundary
 
+LoopDocs is the companion documentation layer: it defines the roles, contents
+and links of README, PRODUCT, DESIGN, agent instructions and supporting docs.
+When documentation structure needs setup or repair, use its guidance if
+available; existing repository document owners remain authoritative. Keep
+documentation updates caused by a work item in that item's feature PR. LoopDocs
+does not select work, add sprint records or introduce a second backlog. A routine
+documentation edit does not require a separate skill handoff or installation.
+
+When an existing content binding selects LoopCast, a noteworthy verified
+development result can supply a linked content idea within the current task/PR.
+LoopCast owns that capture and the content ledger. Do not require content for
+every task, install a content system implicitly or block feature review/merge
+on drafting a post. Keep work status in the configured inventory.
+
 LoopDev owns the work inventory, selection, optional plans, implementation,
 feature validation, user review and the authorized feature merge. LoopShip
 owns release preparation, environment topology, promotion, build/distribution,

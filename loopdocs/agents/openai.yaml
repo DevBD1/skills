@@ -1,0 +1,4 @@
+interface:
+  display_name: "LoopDocs"
+  short_description: "Define and maintain repository documentation"
+  default_prompt: "Use $loopdocs to clarify this repository's document roles, content and links."

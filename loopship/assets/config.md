@@ -8,6 +8,9 @@ Template only. Adapt into the target repo at `.agents/skills/loopship/config.md`
 - Repository and component paths:
 - Product/application identity (bundle/package/store IDs where relevant):
 - Owning release, development and acceptance documents:
+- Documentation index/owners: link existing documents; LoopDocs defines their
+  roles when used, while this contract or its linked owners govern release
+  policy. Keep mutable rules in one place.
 - Last verified date and evidence links:
 - Installation state: draft / implemented / qualified; list outstanding activation prerequisites
 

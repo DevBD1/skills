@@ -8,32 +8,14 @@ skills:
     published_in_repo: true
     notes: Scrapling MCP guidance, recipes, and helper scripts for web scraping workflows.
 
-  - name: antigravity-cli-delegate
+  - name: loopdocs
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/skills/tree/main/antigravity-cli-delegate
-    install_command: npx skills add DevBD1/skills --skill antigravity-cli-delegate
-    license: MIT
-    published_in_repo: true
-    notes: Local delegate wrapper for bounded Antigravity CLI work.
-
-  - name: codex-cli-delegate
-    status: owned
-    author: DevBD1
-    source_url: https://github.com/DevBD1/skills/tree/main/codex-cli-delegate
-    install_command: npx skills add DevBD1/skills --skill codex-cli-delegate
-    license: MIT
-    published_in_repo: true
-    notes: Local delegate wrapper for bounded Codex CLI work by other agents.
-
-  - name: autoscrum
-    status: owned
-    author: DevBD1
-    source_url: https://github.com/DevBD1/skills/tree/main/autoscrum
-    install_command: npx skills add DevBD1/skills --skill autoscrum
+    source_url: https://github.com/DevBD1/skills/tree/main/loopdocs
+    install_command: npx skills add DevBD1/skills --skill loopdocs
     license: null
     published_in_repo: true
-    notes: Establish, operate, or repair a repository's continuous AI-assisted development workflow and document hierarchy.
+    notes: Documentation layer for the Loop family; define and maintain document roles, contents, ownership and links without taking over development or release operations.
 
   - name: loopdev
     status: owned
@@ -53,23 +35,14 @@ skills:
     published_in_repo: true
     notes: Algorithm Edge — code-grounded guide and draft optimizer for high-performing X posts, grounded in X's open-sourced 2026 recommendation algorithm.
 
-  - name: hytale-modder
+  - name: loopcast
     status: owned
     author: DevBD1
-    source_url: https://github.com/DevBD1/skills/tree/main/hytale-modder
-    install_command: npx skills add DevBD1/skills --skill hytale-modder
+    source_url: https://github.com/DevBD1/skills/tree/main/loopcast
+    install_command: npx skills add DevBD1/skills --skill loopcast
     license: null
     published_in_repo: true
-    notes: Local Hytale modding guidance and references.
-
-  - name: buildcast
-    status: owned
-    author: DevBD1
-    source_url: https://github.com/DevBD1/skills/tree/main/buildcast
-    install_command: npx skills add DevBD1/skills --skill buildcast
-    license: null
-    published_in_repo: true
-    notes: Build-in-public content engine — versioned post log, metrics and retros, playbook, reply engine, AGENTS.md idea-capture binding.
+    notes: Loop family content layer, formerly Buildcast; evidence-based ideas and drafts, versioned post history, metrics, retros, playbook and reply drafts. Social publication stays manual.
 
   - name: loopship
     status: owned
