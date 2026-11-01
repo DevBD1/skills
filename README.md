@@ -22,7 +22,7 @@ npx skills add DevBD1/skills --skill loopdev
 
 | Skill | Purpose |
 | --- | --- |
-| `openclaw-skill-scrapling-mcp` | Scrapling MCP guidance, recipes, and helper scripts for web scraping workflows. Curated for OpenClaw. |
+| `openclaw-skill-scrapling-mcp` | Scrapling 0.5.x MCP guidance, recipes and tested Python helpers for OpenClaw. Install/select as `scrapling-mcp`. |
 | `loopdocs` | Define and maintain repository documentation roles, contents and links, including README, PRODUCT, DESIGN and agent instructions; complement LoopDev and LoopShip. |
 | `loopdev` | Adapt repo-specific development: work inventory, optional plans, implementation, validation and one feature PR reviewed before merge; hand releases to LoopShip. |
 | `xpost` | Algorithm Edge — code-grounded guide and draft optimizer for high-performing X (Twitter) posts, grounded in X's open-sourced 2026 recommendation algorithm. |

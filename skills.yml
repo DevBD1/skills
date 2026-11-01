@@ -3,10 +3,10 @@ skills:
     status: owned
     author: DevBD1
     source_url: https://github.com/DevBD1/skills/tree/main/openclaw-skill-scrapling-mcp
-    install_command: npx skills add DevBD1/skills --skill openclaw-skill-scrapling-mcp
+    install_command: npx skills add DevBD1/skills --skill scrapling-mcp
     license: null
     published_in_repo: true
-    notes: Scrapling MCP guidance, recipes, and helper scripts for web scraping workflows.
+    notes: Scrapling 0.5.x MCP guidance, recipes and Python helpers. Directory name is openclaw-skill-scrapling-mcp; SKILL.md name is scrapling-mcp; ClawHub slug is scrapling-web-scraping.
 
   - name: loopdocs
     status: owned
